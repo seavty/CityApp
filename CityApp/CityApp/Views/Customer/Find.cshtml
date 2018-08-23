@@ -1,0 +1,57 @@
+﻿@using CityApp.Utils.Helpers
+@using CityApp.Models.DTO.Customer
+@model CityApp.Models.DTO.Customer.CustomerFindDTO
+@{
+   Layout = "~/Views/Shared/Main/_Main.cshtml";
+}
+
+<form name="record" id="record">
+    @Html.AntiForgeryToken()
+    @Html.Partial("~/Views/Shared/Template/FindMode/Button.cshtml")
+
+    <br />
+    <div class="card shadow-sm">
+        <div class="card-header merienda"> Find Customer </div>
+        @Html.HiddenFor(m => m.orderBy, new { Value = nameof(CustomerViewDTO.name) })
+        @Html.HiddenFor(m => m.orderDirection, new { Value = ConstantHelper.ASC })
+        <!-- card body -->
+        <div class="card-body">
+            <div class="row">
+
+                <div class="col">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.code)
+                        @Html.TextBoxFor(m => m.code, new { @class = "form-control", placeholder = "Customer ID", @maxlength = "100" })
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.name)
+                        @Html.TextBoxFor(m => m.name, new { @class = "form-control", placeholder = "Customer Name", @maxlength = "100" })
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.phoneNumber)
+                        @Html.TextBoxFor(m => m.phoneNumber, new { @class = "form-control", placeholder = "Phone Number", @maxlength = "100" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--end  card body -->
+    </div>
+
+    <br />
+    @Html.Partial("~/Views/Shared/Template/FindMode/TableData.cshtml")
+    <br />
+
+</form>
+
+<script src="~/Content/js/function/template/findmode/button.js"></script>
+<script>
+    const controller = "@ConstantHelper.CUSTOMER_CONTROLLER";
+</script>
+

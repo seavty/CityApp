@@ -1,0 +1,82 @@
+﻿@using CityApp.Models.DTO.User
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm merienda">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand">
+        <img src="~/Content/img/logo.png" style="width:50px; height:40px" />
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li role="separator" class="divider-vertical"></li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Content("~/customer/find")"> <i class="fas fa-users"></i> Customer  </a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Content("~/saleorder/find")"> <i class="fas fa-dollar-sign"></i> SaleOrder  </a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Content("~/item/find")"> <i class="fas fa-cubes"></i> Item  </a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Content("~/sourcesupply/find")"> <i class="fas fa-database"></i> Source Supply  </a>
+            </li>
+
+            <li role="separator" class="divider-vertical"></li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Content("~/user/find")"> <i class="fas fa-user-cog"></i> User  </a>
+            </li>
+
+
+
+        </ul>
+        <div class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @{
+                            /*
+                            var user = (UserViewDTO)HttpContext.Current.Session["user"];
+                            @(user.firstName + " " + user.lastName)
+                            */
+                        }
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="@Url.Content("~/user/changepassword")"> <i class="fas fa-cog"></i> Change Password  </a>
+                    </div>
+                </li>
+                <li role="separator" class="divider-vertical"></li>
+                <li class="nav-item active"> <a class="nav-link" href="javascript:onclick=logout()"> <i class="fas fa-sign-out-alt"></i> Logout  </a> </li>
+            </ul>
+
+
+        </div>
+
+
+    </div>
+</nav>
+
+<br />
+<br />
+<br />
+
+<input type="hidden" name="baseURL" id="baseURL" value="@Request.Url.GetLeftPart(UriPartial.Authority)" />
+
+<script>
+    function logout() {
+        if (confirm("Do you want to log out?")) {
+            const endPoint = "@Url.Content("~/auth")";
+            ajaxHelper(endPoint + "/logout", null, requestMethod.POST).then(function (data) {
+               window.location.href = "@Url.Content("~/auth/login")";
+            });
+
+        }
+    }
+</script>
+
+

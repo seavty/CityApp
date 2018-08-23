@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CityAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblCustomer">
+          <Key>
+            <PropertyRef Name="cust_CustomerID" />
+          </Key>
+          <Property Name="cust_CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cust_CreatedDate" Type="datetime" />
+          <Property Name="cust_CreatedBy" Type="int" />
+          <Property Name="cust_UpdatedDate" Type="datetime" />
+          <Property Name="cust_UpdatedBy" Type="int" />
+          <Property Name="cust_Deleted" Type="int" />
+          <Property Name="cust_Code" Type="nvarchar" MaxLength="100" />
+          <Property Name="cust_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="cust_PhoneNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="cust_Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="cust_Note" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="tblDriver">
+          <Key>
+            <PropertyRef Name="driv_DriverID" />
+          </Key>
+          <Property Name="driv_DriverID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="driv_CreatedDate" Type="datetime" />
+          <Property Name="driv_CreatedBy" Type="int" />
+          <Property Name="driv_UpdatedDate" Type="datetime" />
+          <Property Name="driv_UpdatedBy" Type="int" />
+          <Property Name="driv_Deleted" Type="int" />
+          <Property Name="driv_Code" Type="nvarchar" MaxLength="100" />
+          <Property Name="driv_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="driv_PhoneNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="driv_Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="driv_Note" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="user_UserID" />
+          </Key>
+          <Property Name="user_UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_CreatedDate" Type="datetime" />
+          <Property Name="user_CreatedBy" Type="int" />
+          <Property Name="user_UpdatedDate" Type="datetime" />
+          <Property Name="user_UpdatedBy" Type="int" />
+          <Property Name="user_UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_Deleted" Type="int" />
+          <Property Name="user_Password" Type="nvarchar" MaxLength="300" />
+          <Property Name="user_Session" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_PhoneNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_Token" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityContainer Name="CityAppModelStoreContainer">
+          <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDriver" EntityType="Self.tblDriver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CityAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblDriver">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="createdBy" Type="Int32" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+          <Property Name="updatedBy" Type="Int32" />
+          <Property Name="deleted" Type="Int32" />
+          <Property Name="code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="phoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="note" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="createdBy" Type="Int32" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+          <Property Name="updatedBy" Type="Int32" />
+          <Property Name="userName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="deleted" Type="Int32" />
+          <Property Name="password" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="session" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="phoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="token" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="CityAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblDrivers" EntityType="Self.tblDriver" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <EntitySet Name="tblCustomers" EntityType="CityAppModel.tblCustomer" />
+        </EntityContainer>
+        <EntityType Name="tblCustomer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="createdBy" Type="Int32" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+          <Property Name="updatedBy" Type="Int32" />
+          <Property Name="deleted" Type="Int32" />
+          <Property Name="code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="phoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="note" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CityAppModelStoreContainer" CdmEntityContainer="CityAppEntities">
+          <EntitySetMapping Name="tblDrivers">
+            <EntityTypeMapping TypeName="CityAppModel.tblDriver">
+              <MappingFragment StoreEntitySet="tblDriver">
+                <ScalarProperty Name="id" ColumnName="driv_DriverID" />
+                <ScalarProperty Name="createdDate" ColumnName="driv_CreatedDate" />
+                <ScalarProperty Name="createdBy" ColumnName="driv_CreatedBy" />
+                <ScalarProperty Name="updatedDate" ColumnName="driv_UpdatedDate" />
+                <ScalarProperty Name="updatedBy" ColumnName="driv_UpdatedBy" />
+                <ScalarProperty Name="deleted" ColumnName="driv_Deleted" />
+                <ScalarProperty Name="code" ColumnName="driv_Code" />
+                <ScalarProperty Name="name" ColumnName="driv_Name" />
+                <ScalarProperty Name="phoneNumber" ColumnName="driv_PhoneNumber" />
+                <ScalarProperty Name="email" ColumnName="driv_Email" />
+                <ScalarProperty Name="note" ColumnName="driv_Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="CityAppModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="id" ColumnName="user_UserID" />
+                <ScalarProperty Name="createdDate" ColumnName="user_CreatedDate" />
+                <ScalarProperty Name="createdBy" ColumnName="user_CreatedBy" />
+                <ScalarProperty Name="updatedDate" ColumnName="user_UpdatedDate" />
+                <ScalarProperty Name="updatedBy" ColumnName="user_UpdatedBy" />
+                <ScalarProperty Name="userName" ColumnName="user_UserName" />
+                <ScalarProperty Name="firstName" ColumnName="user_FirstName" />
+                <ScalarProperty Name="lastName" ColumnName="user_LastName" />
+                <ScalarProperty Name="deleted" ColumnName="user_Deleted" />
+                <ScalarProperty Name="password" ColumnName="user_Password" />
+                <ScalarProperty Name="session" ColumnName="user_Session" />
+                <ScalarProperty Name="phoneNumber" ColumnName="user_PhoneNumber" />
+                <ScalarProperty Name="email" ColumnName="user_Email" />
+                <ScalarProperty Name="token" ColumnName="user_Token" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCustomers">
+            <EntityTypeMapping TypeName="CityAppModel.tblCustomer">
+              <MappingFragment StoreEntitySet="tblCustomer">
+                <ScalarProperty Name="note" ColumnName="cust_Note" />
+                <ScalarProperty Name="email" ColumnName="cust_Email" />
+                <ScalarProperty Name="phoneNumber" ColumnName="cust_PhoneNumber" />
+                <ScalarProperty Name="name" ColumnName="cust_Name" />
+                <ScalarProperty Name="code" ColumnName="cust_Code" />
+                <ScalarProperty Name="deleted" ColumnName="cust_Deleted" />
+                <ScalarProperty Name="updatedBy" ColumnName="cust_UpdatedBy" />
+                <ScalarProperty Name="updatedDate" ColumnName="cust_UpdatedDate" />
+                <ScalarProperty Name="createdBy" ColumnName="cust_CreatedBy" />
+                <ScalarProperty Name="createdDate" ColumnName="cust_CreatedDate" />
+                <ScalarProperty Name="id" ColumnName="cust_CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

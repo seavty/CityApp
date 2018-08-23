@@ -1,0 +1,13 @@
+﻿@using ChipMongWebApp.Utils.Helpers
+@{
+    Layout = "~/Views/Shared/Main/_Main.cshtml";
+}
+
+@Html.Partial("~/Views/Shared/Template/NewMode/Button.cshtml")
+<br />
+@Html.Partial("~/Views/Customer/Form.cshtml")
+
+<script src="~/Content/js/function/template/newmode/button.js"></script>
+<script>
+    const controller = "@ConstantHelper.CUSTOMER_CONTROLLER";
+</script>
