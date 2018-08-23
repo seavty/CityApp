@@ -5,7 +5,7 @@
     <thead>
         <tr class="text-center">
             <th scope="col" width="65px">#</th>
-            <th scope="col"> <a href="#" id="sort_@nameof(CustomerViewDTO.code)" class="sort-data" onclick='javascript:sort("@nameof(CustomerViewDTO.code)", $(this))'> ID </a>  </th>
+            <th scope="col"> <a href="#" id="sort_@nameof(CustomerViewDTO.code)" class="sort-data" onclick='javascript:sort("@nameof(CustomerViewDTO.code)", $(this))'> Customer ID </a>  </th>
             <th scope="col"> <a href="#" id="sort_@nameof(CustomerViewDTO.name)" class="sort-data" onclick='javascript:sort("@nameof(CustomerViewDTO.name)", $(this))'> Name </a>  </th>
             <th scope="col"> <a href="#" id="sort_@nameof(CustomerViewDTO.PhoneNumber)" class="sort-data" onclick='javascript:sort("@nameof(CustomerViewDTO.PhoneNumber)")'> Phone Number </a>  </th>
             <th scope="col"> <a href="#" id="sort_@nameof(CustomerViewDTO.email)" class="sort-data" onclick='javascript:sort("@nameof(CustomerViewDTO.email)")'> E-mail </a>  </th>
@@ -23,7 +23,6 @@
                     <td> @item.name </td>
                     <td> @item.PhoneNumber </td>
                     <td> @item.email </td>
-
                 </tr>
                 i++;
             }

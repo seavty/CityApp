@@ -12,6 +12,7 @@ const paging = currentPage => {
     $("#currentPage").val(currentPage);
     ajaxHelper(controller + "/paging/", $("#record").serializeObject(), requestMethod.POST).then((data) => {
         $("#tableData").html(data);
+        //$("#loader").removeClass("loader");
         $("#sortIcon").remove();
         let sortIcon = "";
         const ascIcon = `<i id="sortIcon" class="fas fa-sort-up"></i>`;
@@ -28,7 +29,7 @@ const newRecord = () => location.href = controller + "/new";
 const find = () => {
     $("#currentPage").val(1);
     paging(1);
-}
+};
 
 const sort = (orderBy, prop) => {
     if ($("#orderBy").val() == orderBy)
@@ -37,5 +38,5 @@ const sort = (orderBy, prop) => {
         $("#orderDirection").val("ASC");
     $("#orderBy").val(orderBy);
     paging(1);
-}
+};
 

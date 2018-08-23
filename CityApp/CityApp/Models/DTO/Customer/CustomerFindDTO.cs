@@ -10,7 +10,7 @@ namespace CityApp.Models.DTO.Customer
     public class CustomerFindDTO : FindDTO
     {
         [MaxLength(100)]
-        [DisplayName("ID:")]
+        [DisplayName("Customer ID:")]
         public string code { get; set; }
 
         [MaxLength(100)]

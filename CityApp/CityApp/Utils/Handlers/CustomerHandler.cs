@@ -87,7 +87,7 @@ namespace CityApp.Utils.Handlers
             }
             var getList = new GetListDTO<CustomerViewDTO>();
             getList.metaData = PaginationHelper.GetMetaData(currentPage, totalRecord);
-            getList.metaData.numberOfColumn = 6; // need to change number of column
+            getList.metaData.numberOfColumn = 5; // need to change number of column
             getList.items = myList;
             return getList;
         }
