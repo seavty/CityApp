@@ -50,9 +50,8 @@ namespace CityApp.Models.DTO.Customer
         [DisplayName("Phone Number (*):")]
         public string PhoneNumber { get; set; }
 
-        [Required]
         [MaxLength(100)]
-        [DisplayName("E-mail (*):")]
+        [DisplayName("E-mail:")]
         public string email { get; set; }
 
     }

@@ -1,5 +1,5 @@
 ﻿@using CityApp.Utils.Helpers
-@model CityApp.Models.DTO.Customer.CustomerViewDTO
+@model CityApp.Models.DTO.Driver.DriverViewDTO
 
 @{ 
     var isDiable = "";
@@ -20,7 +20,7 @@
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.id)
         <div class="card shadow-sm">
-            <div class="card-header merienda"> Customer </div>
+            <div class="card-header merienda"> Driver </div>
 
             <!-- card body -->
             <div class="card-body">
@@ -38,7 +38,7 @@
                     <div class="col-4">
                         <div class="form-group">
                             @Html.LabelFor(m => m.name)
-                            @Html.TextBoxFor(m => m.name, new { @class = "form-control required", placeholder = "Customer Name", @maxlength = "100" })
+                            @Html.TextBoxFor(m => m.name, new { @class = "form-control required", placeholder = "Driver Name", @maxlength = "100" })
                         </div>
                     </div>
 

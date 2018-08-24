@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/Main/_Main.cshtml";
 }
 
-@Html.Partial("~/Views/Customer/Tabs.cshtml")
+@Html.Partial("~/Views/Driver/Tabs.cshtml")
 
 <div class="card" id="action">
     <div class="card-body text-dark shadow-sm merienda">
@@ -13,14 +13,14 @@
 
 <br />
 
-@Html.Partial("~/Views/Customer/Form.cshtml")
+@Html.Partial("~/Views/Driver/Form.cshtml")
 
 <script src="~/Content/js/function/template/viewmode/button.js"></script>
 <script>
-    const controller = "@ConstantHelper.CUSTOMER_CONTROLLER";
+    const controller = "@ConstantHelper.DRIVER_CONTROLLER";
     const id = "@Url.RequestContext.RouteData.Values["id"]";
 
-    $(document).ready(() => $("#customerTab").contents().unwrap());
-    const saleorderTab = () => location.href = controller + "/saleordertab/" + id;
-    const sourceSupplyTab = () => location.href = controller + "/sourceSupplytab/" + id;
+    $(document).ready(() => $("#driverTab").contents().unwrap());
+    const driverTab = () => location.href = controller + "/drivertab/" + id;
+    
 </script>
