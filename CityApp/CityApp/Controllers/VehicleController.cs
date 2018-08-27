@@ -1,12 +1,7 @@
-﻿using CityApp.Models.DTO.Driver;
-using CityApp.Models.DTO.SSA;
+﻿using CityApp.Models.DTO.Vehicle;
 using CityApp.Utils.Attribute;
 using CityApp.Utils.Handlers;
 using CityApp.Utils.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
@@ -16,22 +11,27 @@ namespace CityApp.Controllers
 {
     //[Authentication] //--for testing tmp disable authentication
     [ErrorLogger]
-    public class DriverController : Controller
+    public class VehicleController : Controller
     {
-        private readonly DriverHandler handler;
+        private readonly VehicleHandler handler;
 
-        public DriverController()
+        public VehicleController()
         {
-            handler = new DriverHandler(); 
+            handler = new VehicleHandler(); 
         }
 
         //--> New
-        public ActionResult New() { return View(); }
+        public ActionResult New()
+        {
+            var record = new VehicleViewDTO();
+            record.mode = ConstantHelper.MODE_NEW;
+            return View(record);
+        }
 
         //-> New
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<JsonResult> New(DriverNewDTO newDTO)
+        public async Task<JsonResult> New(VehicleNewDTO newDTO)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace CityApp.Controllers
         //-> Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<JsonResult> Edit(DriverEditDTO editDTO)
+        public async Task<JsonResult> Edit(VehicleEditDTO editDTO)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace CityApp.Controllers
         //-> Paging
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Paging(DriverFindDTO findDTO) { return PartialView(await handler.GetList(findDTO)); }
+        public async Task<ActionResult> Paging(VehicleFindDTO findDTO) { return PartialView(await handler.GetList(findDTO)); }
 
         //-> Delete
         //??? why if use http delete - resource alway not found ? ???
@@ -107,14 +107,5 @@ namespace CityApp.Controllers
                 return ex.Message;
             }
         }
-
-
-        //-> SSA
-        public async Task<JsonResult> SSA()
-        {
-            return Json(await handler.SSA(Request.QueryString["q"]), JsonRequestBehavior.AllowGet);
-        }
-
-
     }
 }

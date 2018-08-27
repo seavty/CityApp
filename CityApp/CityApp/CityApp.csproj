@@ -164,6 +164,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -194,7 +195,16 @@
     <Compile Include="Models\DB\tblUser.cs">
       <DependentUpon>CityAppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB\tblVehicle.cs">
+      <DependentUpon>CityAppModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DTO\Auth\LoginDTO.cs" />
+    <Compile Include="Models\DTO\Vehicle\VehicleBaseDTO.cs" />
+    <Compile Include="Models\DTO\Vehicle\VehicleEditDTO.cs" />
+    <Compile Include="Models\DTO\Vehicle\VehicleFindResultDTO.cs" />
+    <Compile Include="Models\DTO\Vehicle\VehicleFindDTO.cs" />
+    <Compile Include="Models\DTO\Vehicle\VehicleNewDTO.cs" />
+    <Compile Include="Models\DTO\Vehicle\VehicleViewDTO.cs" />
     <Compile Include="Models\DTO\Driver\DriverBaseDTO.cs" />
     <Compile Include="Models\DTO\Driver\DriverEditDTO.cs" />
     <Compile Include="Models\DTO\Driver\DriverFindDTO.cs" />
@@ -230,6 +240,7 @@
     <Compile Include="Utils\Extension\PagingExtension.cs" />
     <Compile Include="Utils\Extension\StringExtension.cs" />
     <Compile Include="Utils\Handlers\AuthHandler.cs" />
+    <Compile Include="Utils\Handlers\VehicleHandler.cs" />
     <Compile Include="Utils\Handlers\DriverHandler.cs" />
     <Compile Include="Utils\Handlers\CustomerHandler.cs" />
     <Compile Include="Utils\Handlers\UserHandler.cs" />
@@ -281,7 +292,7 @@
     <Content Include="Content\js\jquery.serialize-object.min.js" />
     <Content Include="Content\js\jquery.toast.js" />
     <Content Include="Content\js\jquery_min.js" />
-    <Content Include="Content\js\modules\SaleOrder.js" />
+    <Content Include="Content\js\modules\vehicle\script.js" />
     <Content Include="Content\js\popper.min.js" />
     <Content Include="Content\js\select2.full.js" />
     <Content Include="Content\js\select2.min.js" />
@@ -381,6 +392,15 @@
     <Content Include="Views\Driver\SourceSupplyTab.cshtml" />
     <Content Include="Views\Driver\Tabs.cshtml" />
     <Content Include="Views\Driver\View.cshtml" />
+    <Content Include="Views\Vehicle\Edit.cshtml" />
+    <Content Include="Views\Vehicle\Find.cshtml" />
+    <Content Include="Views\Vehicle\Form.cshtml" />
+    <Content Include="Views\Vehicle\New.cshtml" />
+    <Content Include="Views\Vehicle\Paging.cshtml" />
+    <Content Include="Views\Vehicle\SaleOrderTab.cshtml" />
+    <Content Include="Views\Vehicle\SourceSupplyTab.cshtml" />
+    <Content Include="Views\Vehicle\Tabs.cshtml" />
+    <Content Include="Views\Vehicle\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

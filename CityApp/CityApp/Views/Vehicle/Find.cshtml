@@ -1,6 +1,6 @@
 ﻿@using CityApp.Utils.Helpers
-@using CityApp.Models.DTO.Customer
-@model CityApp.Models.DTO.Customer.CustomerFindDTO
+@using CityApp.Models.DTO.Vehicle
+@model CityApp.Models.DTO.Vehicle.VehicleFindDTO
 @{
    Layout = "~/Views/Shared/Main/_Main.cshtml";
 }
@@ -11,8 +11,8 @@
 
     <br />
     <div class="card shadow-sm">
-        <div class="card-header merienda"> Find Customer </div>
-        @Html.HiddenFor(m => m.orderBy, new { Value = nameof(CustomerViewDTO.customerName) })
+        <div class="card-header merienda"> Find Vehicle </div>
+        @Html.HiddenFor(m => m.orderBy, new { Value = nameof(VehicleViewDTO.vehicleName) })
         @Html.HiddenFor(m => m.orderDirection, new { Value = ConstantHelper.ASC })
         <!-- card body -->
         <div class="card-body">
@@ -20,22 +20,22 @@
 
                 <div class="col">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.customerCode)
-                        @Html.TextBoxFor(m => m.customerCode, new { @class = "form-control", placeholder = "Customer ID", @maxlength = "100" })
+                        @Html.LabelFor(m => m.vehicleCode)
+                        @Html.TextBoxFor(m => m.vehicleCode, new { @class = "form-control", placeholder = "Vehicle ID", @maxlength = "100" })
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.customerName)
-                        @Html.TextBoxFor(m => m.customerName, new { @class = "form-control", placeholder = "Customer Name", @maxlength = "100" })
+                        @Html.LabelFor(m => m.plateNumber)
+                        @Html.TextBoxFor(m => m.plateNumber, new { @class = "form-control", placeholder = "Plate Number", @maxlength = "100" })
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.phoneNumber)
-                        @Html.TextBoxFor(m => m.phoneNumber, new { @class = "form-control", placeholder = "Phone Number", @maxlength = "100" })
+                        @Html.LabelFor(m => m.driverName)
+                        @Html.TextBoxFor(m => m.driverName, new { @class = "form-control", placeholder = "Driver Name", @maxlength = "100" })
                     </div>
                 </div>
 
@@ -52,6 +52,6 @@
 
 <script src="~/Content/js/function/template/findmode/button.js"></script>
 <script>
-    const controller = "@ConstantHelper.CUSTOMER_CONTROLLER";
+    const controller = "@ConstantHelper.VEHICLE_CONTROLLER";
 </script>
 

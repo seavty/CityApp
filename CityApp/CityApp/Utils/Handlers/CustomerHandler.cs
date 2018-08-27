@@ -65,8 +65,8 @@ namespace CityApp.Utils.Handlers
         {
             IQueryable<tblCustomer> query = db.tblCustomers.Where(x => x.deleted == null);
             
-            if (!string.IsNullOrEmpty(findDTO.code))        query = query.Where(x => x.code.StartsWith(findDTO.code));
-            if (!string.IsNullOrEmpty(findDTO.name))   query = query.Where(x => x.name.StartsWith(findDTO.name));
+            if (!string.IsNullOrEmpty(findDTO.customerCode))        query = query.Where(x => x.customerCode.StartsWith(findDTO.customerCode));
+            if (!string.IsNullOrEmpty(findDTO.customerName))   query = query.Where(x => x.customerName.StartsWith(findDTO.customerName));
             if (!string.IsNullOrEmpty(findDTO.phoneNumber))    query = query.Where(x => x.phoneNumber.StartsWith(findDTO.phoneNumber));
 
             query = query.AsQueryable().OrderBy($"{findDTO.orderBy} {findDTO.orderDirection}");

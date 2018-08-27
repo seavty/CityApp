@@ -56,10 +56,28 @@
           <Property Name="user_Email" Type="nvarchar" MaxLength="100" />
           <Property Name="user_Token" Type="nvarchar" MaxLength="300" />
         </EntityType>
+        <EntityType Name="tblVehicle">
+          <Key>
+            <PropertyRef Name="vehi_VehicleID" />
+          </Key>
+          <Property Name="vehi_VehicleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vehi_CreatedDate" Type="datetime" />
+          <Property Name="vehi_CreatedBy" Type="int" />
+          <Property Name="vehi_UpdatedDate" Type="datetime" />
+          <Property Name="vehi_UpdatedBy" Type="int" />
+          <Property Name="vehi_Deleted" Type="int" />
+          <Property Name="vehi_Code" Type="nvarchar" MaxLength="100" />
+          <Property Name="vehi_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="vehi_Chassis" Type="nvarchar" MaxLength="100" />
+          <Property Name="vehi_PlateNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="vehi_EngineNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="vehi_DriverID" Type="int" />
+        </EntityType>
         <EntityContainer Name="CityAppModelStoreContainer">
           <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDriver" EntityType="Self.tblDriver" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVehicle" EntityType="Self.tblVehicle" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -75,8 +93,8 @@
           <Property Name="updatedDate" Type="DateTime" Precision="3" />
           <Property Name="updatedBy" Type="Int32" />
           <Property Name="deleted" Type="Int32" />
-          <Property Name="code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="driverCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="driverName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="phoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="note" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
@@ -104,6 +122,7 @@
           <EntitySet Name="tblDrivers" EntityType="Self.tblDriver" />
           <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
           <EntitySet Name="tblCustomers" EntityType="CityAppModel.tblCustomer" />
+          <EntitySet Name="tblVehicles" EntityType="CityAppModel.tblVehicle" />
         </EntityContainer>
         <EntityType Name="tblCustomer">
           <Key>
@@ -115,11 +134,28 @@
           <Property Name="updatedDate" Type="DateTime" Precision="3" />
           <Property Name="updatedBy" Type="Int32" />
           <Property Name="deleted" Type="Int32" />
-          <Property Name="code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="customerCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="customerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="phoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="note" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblVehicle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="createdBy" Type="Int32" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+          <Property Name="updatedBy" Type="Int32" />
+          <Property Name="deleted" Type="Int32" />
+          <Property Name="vehicleCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="vehicleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="chassis" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="plateNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="engineNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="driverID" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -136,8 +172,8 @@
                 <ScalarProperty Name="updatedDate" ColumnName="driv_UpdatedDate" />
                 <ScalarProperty Name="updatedBy" ColumnName="driv_UpdatedBy" />
                 <ScalarProperty Name="deleted" ColumnName="driv_Deleted" />
-                <ScalarProperty Name="code" ColumnName="driv_Code" />
-                <ScalarProperty Name="name" ColumnName="driv_Name" />
+                <ScalarProperty Name="driverCode" ColumnName="driv_Code" />
+                <ScalarProperty Name="driverName" ColumnName="driv_Name" />
                 <ScalarProperty Name="phoneNumber" ColumnName="driv_PhoneNumber" />
                 <ScalarProperty Name="email" ColumnName="driv_Email" />
                 <ScalarProperty Name="note" ColumnName="driv_Note" />
@@ -170,14 +206,32 @@
                 <ScalarProperty Name="note" ColumnName="cust_Note" />
                 <ScalarProperty Name="email" ColumnName="cust_Email" />
                 <ScalarProperty Name="phoneNumber" ColumnName="cust_PhoneNumber" />
-                <ScalarProperty Name="name" ColumnName="cust_Name" />
-                <ScalarProperty Name="code" ColumnName="cust_Code" />
+                <ScalarProperty Name="customerName" ColumnName="cust_Name" />
+                <ScalarProperty Name="customerCode" ColumnName="cust_Code" />
                 <ScalarProperty Name="deleted" ColumnName="cust_Deleted" />
                 <ScalarProperty Name="updatedBy" ColumnName="cust_UpdatedBy" />
                 <ScalarProperty Name="updatedDate" ColumnName="cust_UpdatedDate" />
                 <ScalarProperty Name="createdBy" ColumnName="cust_CreatedBy" />
                 <ScalarProperty Name="createdDate" ColumnName="cust_CreatedDate" />
                 <ScalarProperty Name="id" ColumnName="cust_CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVehicles">
+            <EntityTypeMapping TypeName="CityAppModel.tblVehicle">
+              <MappingFragment StoreEntitySet="tblVehicle">
+                <ScalarProperty Name="driverID" ColumnName="vehi_DriverID" />
+                <ScalarProperty Name="engineNumber" ColumnName="vehi_EngineNumber" />
+                <ScalarProperty Name="plateNumber" ColumnName="vehi_PlateNumber" />
+                <ScalarProperty Name="chassis" ColumnName="vehi_Chassis" />
+                <ScalarProperty Name="vehicleName" ColumnName="vehi_Name" />
+                <ScalarProperty Name="vehicleCode" ColumnName="vehi_Code" />
+                <ScalarProperty Name="deleted" ColumnName="vehi_Deleted" />
+                <ScalarProperty Name="updatedBy" ColumnName="vehi_UpdatedBy" />
+                <ScalarProperty Name="updatedDate" ColumnName="vehi_UpdatedDate" />
+                <ScalarProperty Name="createdBy" ColumnName="vehi_CreatedBy" />
+                <ScalarProperty Name="createdDate" ColumnName="vehi_CreatedDate" />
+                <ScalarProperty Name="id" ColumnName="vehi_VehicleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -65,8 +65,8 @@ namespace CityApp.Utils.Handlers
         {
             IQueryable<tblDriver> query = db.tblDrivers.Where(x => x.deleted == null);
             
-            if (!string.IsNullOrEmpty(findDTO.code))        query = query.Where(x => x.code.StartsWith(findDTO.code));
-            if (!string.IsNullOrEmpty(findDTO.name))   query = query.Where(x => x.name.StartsWith(findDTO.name));
+            if (!string.IsNullOrEmpty(findDTO.driverCode))        query = query.Where(x => x.driverCode.StartsWith(findDTO.driverCode));
+            if (!string.IsNullOrEmpty(findDTO.driverName))   query = query.Where(x => x.driverName.StartsWith(findDTO.driverName));
             if (!string.IsNullOrEmpty(findDTO.phoneNumber))    query = query.Where(x => x.phoneNumber.StartsWith(findDTO.phoneNumber));
 
             query = query.AsQueryable().OrderBy($"{findDTO.orderBy} {findDTO.orderDirection}");
@@ -107,6 +107,20 @@ namespace CityApp.Utils.Handlers
             record.deleted = 1;
             await db.SaveChangesAsync();
             return true;
+        }
+
+        //-> SSA
+        public async Task<GetSSADTO<DriverViewDTO>> SSA(string search)
+        {
+            IQueryable<tblDriver> query = db.tblDrivers.Where(x => x.deleted == null);
+            if (!string.IsNullOrEmpty(search))
+                query = query.Where(x => x.driverName.StartsWith(search));
+            query = query.OrderBy(x => x.driverName);
+
+            var ssa = new GetSSADTO<DriverViewDTO>();
+            ssa.results = (await ListingHandler(1, query)).items;
+
+            return ssa;
         }
     }
 }

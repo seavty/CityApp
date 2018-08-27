@@ -5,8 +5,8 @@
     <thead>
         <tr class="text-center">
             <th scope="col" width="65px">#</th>
-            <th scope="col"> <a href="#" id="sort_@nameof(CustomerViewDTO.code)" class="sort-data" onclick='javascript:sort("@nameof(CustomerViewDTO.code)", $(this))'> Customer ID </a>  </th>
-            <th scope="col"> <a href="#" id="sort_@nameof(CustomerViewDTO.name)" class="sort-data" onclick='javascript:sort("@nameof(CustomerViewDTO.name)", $(this))'> Name </a>  </th>
+            <th scope="col"> <a href="#" id="sort_@nameof(CustomerViewDTO.customerCode)" class="sort-data" onclick='javascript:sort("@nameof(CustomerViewDTO.customerCode)", $(this))'> Customer ID </a>  </th>
+            <th scope="col"> <a href="#" id="sort_@nameof(CustomerViewDTO.customerName)" class="sort-data" onclick='javascript:sort("@nameof(CustomerViewDTO.customerName)", $(this))'> Customer Name </a>  </th>
             <th scope="col"> <a href="#" id="sort_@nameof(CustomerViewDTO.PhoneNumber)" class="sort-data" onclick='javascript:sort("@nameof(CustomerViewDTO.PhoneNumber)")'> Phone Number </a>  </th>
             <th scope="col"> <a href="#" id="sort_@nameof(CustomerViewDTO.email)" class="sort-data" onclick='javascript:sort("@nameof(CustomerViewDTO.email)")'> E-mail </a>  </th>
             
@@ -19,8 +19,8 @@
             {
                 <tr>
                     <th scope="row" class="text-center"> @(Model.metaData.startRow + i) </th>
-                    <td class="align-middle"> <a href=" @Url.Content("~/customer/view/")@item.id"> @item.code </a> </td>
-                    <td> @item.name </td>
+                    <td class="align-middle"> <a href=" @Url.Content("~/customer/view/")@item.id"> @item.customerCode </a> </td>
+                    <td> @item.customerName </td>
                     <td> @item.PhoneNumber </td>
                     <td> @item.email </td>
                 </tr>

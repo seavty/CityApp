@@ -11,11 +11,11 @@ namespace CityApp.Models.DTO.Customer
     {
         [MaxLength(100)]
         [DisplayName("Customer ID:")]
-        public string code { get; set; }
+        public string customerCode { get; set; }
 
         [MaxLength(100)]
-        [DisplayName("Name:")]
-        public string name { get; set; }
+        [DisplayName("Customer Name:")]
+        public string customerName { get; set; }
 
         [MaxLength(100)]
         [DisplayName("Phone Number:")]

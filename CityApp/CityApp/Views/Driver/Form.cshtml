@@ -30,15 +30,15 @@
 
                     <div class="col-4">
                         <div class="form-group">
-                            @Html.LabelFor(m => m.code)
-                            @Html.TextBoxFor(m => m.code, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.LabelFor(m => m.driverCode)
+                            @Html.TextBoxFor(m => m.driverCode, new { @class = "form-control", placeholder = "Driver ID", @readonly = "readonly" })
                         </div>
                     </div>
 
                     <div class="col-4">
                         <div class="form-group">
-                            @Html.LabelFor(m => m.name)
-                            @Html.TextBoxFor(m => m.name, new { @class = "form-control required", placeholder = "Driver Name", @maxlength = "100" })
+                            @Html.LabelFor(m => m.driverName)
+                            @Html.TextBoxFor(m => m.driverName, new { @class = "form-control required", placeholder = "Driver Name", @maxlength = "100" })
                         </div>
                     </div>
 

@@ -1,0 +1,26 @@
+﻿@using CityApp.Utils.Helpers
+@{
+    Layout = "~/Views/Shared/Main/_Main.cshtml";
+}
+
+@Html.Partial("~/Views/Vehicle/Tabs.cshtml")
+
+<div class="card" id="action">
+    <div class="card-body text-dark shadow-sm merienda">
+        @Html.Partial("~/Views/Shared/Template/ViewMode/Button.cshtml")
+    </div>
+</div>
+
+<br />
+
+@Html.Partial("~/Views/Vehicle/Form.cshtml")
+
+<script src="~/Content/js/function/template/viewmode/button.js"></script>
+<script>
+    const controller = "@ConstantHelper.VEHICLE_CONTROLLER";
+    const id = "@Url.RequestContext.RouteData.Values["id"]";
+
+    $(document).ready(() => $("#vehicleTab").contents().unwrap());
+    const VehicleTab = () => location.href = controller + "/Vehicletab/" + id;
+    
+</script>

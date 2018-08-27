@@ -12,7 +12,7 @@ namespace CityApp.Models.DTO.Driver
         [Required]
         [MaxLength(100)]
         [DisplayName("Driver Name (*):")]
-        public string name { get; set; }
+        public string driverName { get; set; }
 
         [Required]
         [MaxLength(100)]

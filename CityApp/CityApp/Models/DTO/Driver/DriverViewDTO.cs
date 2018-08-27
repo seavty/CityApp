@@ -13,6 +13,6 @@ namespace CityApp.Models.DTO.Driver
 
         [MaxLength(100)]
         [DisplayName("Driver ID:")]
-        public string code { get; set; }
+        public string driverCode { get; set; }
     }
 }

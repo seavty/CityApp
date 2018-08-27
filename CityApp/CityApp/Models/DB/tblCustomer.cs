@@ -20,8 +20,8 @@ namespace CityApp.Models.DB
         public Nullable<System.DateTime> updatedDate { get; set; }
         public Nullable<int> updatedBy { get; set; }
         public Nullable<int> deleted { get; set; }
-        public string code { get; set; }
-        public string name { get; set; }
+        public string customerCode { get; set; }
+        public string customerName { get; set; }
         public string phoneNumber { get; set; }
         public string email { get; set; }
         public string note { get; set; }

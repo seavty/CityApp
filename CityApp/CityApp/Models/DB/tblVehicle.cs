@@ -12,7 +12,7 @@ namespace CityApp.Models.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class tblDriver
+    public partial class tblVehicle
     {
         public int id { get; set; }
         public Nullable<System.DateTime> createdDate { get; set; }
@@ -20,10 +20,11 @@ namespace CityApp.Models.DB
         public Nullable<System.DateTime> updatedDate { get; set; }
         public Nullable<int> updatedBy { get; set; }
         public Nullable<int> deleted { get; set; }
-        public string driverCode { get; set; }
-        public string driverName { get; set; }
-        public string phoneNumber { get; set; }
-        public string email { get; set; }
-        public string note { get; set; }
+        public string vehicleCode { get; set; }
+        public string vehicleName { get; set; }
+        public string chassis { get; set; }
+        public string plateNumber { get; set; }
+        public string engineNumber { get; set; }
+        public Nullable<int> driverID { get; set; }
     }
 }

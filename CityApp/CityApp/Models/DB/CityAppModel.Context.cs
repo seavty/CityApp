@@ -28,5 +28,6 @@ namespace CityApp.Models.DB
         public virtual DbSet<tblDriver> tblDrivers { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
         public virtual DbSet<tblCustomer> tblCustomers { get; set; }
+        public virtual DbSet<tblVehicle> tblVehicles { get; set; }
     }
 }

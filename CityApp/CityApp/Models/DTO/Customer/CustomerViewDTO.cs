@@ -13,6 +13,6 @@ namespace CityApp.Models.DTO.Customer
 
         [MaxLength(100)]
         [DisplayName("Customer ID:")]
-        public string code { get; set; }
+        public string customerCode { get; set; }
     }
 }

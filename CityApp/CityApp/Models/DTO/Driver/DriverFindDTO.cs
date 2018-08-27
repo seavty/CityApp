@@ -11,11 +11,11 @@ namespace CityApp.Models.DTO.Driver
     {
         [MaxLength(100)]
         [DisplayName("Driver ID:")]
-        public string code { get; set; }
+        public string driverCode { get; set; }
 
         [MaxLength(100)]
-        [DisplayName("Name:")]
-        public string name { get; set; }
+        [DisplayName("Driver Name:")]
+        public string driverName { get; set; }
 
         [MaxLength(100)]
         [DisplayName("Phone Number:")]

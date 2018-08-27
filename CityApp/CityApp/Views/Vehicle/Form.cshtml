@@ -1,0 +1,84 @@
+﻿@using CityApp.Utils.Helpers
+@model CityApp.Models.DTO.Vehicle.VehicleViewDTO
+
+@{ 
+    var isDiable = "";
+    var isSummary = "";
+
+    if(Model != null)
+    {
+        if (Model.mode == ConstantHelper.MODE_VIEW)
+        {
+            isDiable = "disabled";
+            isSummary = "summary";
+        }
+    }
+}
+
+<form id="record" name="record">
+    <fieldset @isDiable class=@isSummary>
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.id)
+        <div class="card shadow-sm">
+            <div class="card-header merienda"> Vehicle </div>
+
+            <!-- card body -->
+            <div class="card-body">
+
+                <!--row 1-->
+                <div class="row">
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.vehicleCode)
+                            @Html.TextBoxFor(m => m.vehicleCode, new { placeholder = "Vehicle ID", @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.driverID)
+                            @Html.DropDownListFor(m => m.driverID, SSAHelper.DriverSSA(Model.driverID), null, new { @class = "form-control required" })
+                        </div>
+                    </div>
+                    
+                    <div class="col-4">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.vehicleName)
+                            @Html.TextBoxFor(m => m.vehicleName, new { @class = "form-control required", placeholder = "Vehicle Name", @maxlength = "100" })
+                        </div>
+                    </div>
+
+                </div>
+                <!--end  row 1-->
+                <!--row 2-->
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.plateNumber)
+                            @Html.TextBoxFor(m => m.plateNumber, new { @class = "form-control required", placeholder = "Plate Number", @maxlength = "100" })
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.chassis)
+                            @Html.TextBoxFor(m => m.chassis, new { @class = "form-control required", placeholder = "Chassis", @maxlength = "100" })
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.engineNumber)
+                            @Html.TextBoxFor(m => m.engineNumber, new { @class = "form-control required", placeholder = "Engine Number", @maxlength = "100" })
+                        </div>
+                    </div>
+                </div>
+                <!--end  row 2-->
+            </div>
+            <!-- end card body -->
+        </div>
+
+    </fieldset>
+</form>
+

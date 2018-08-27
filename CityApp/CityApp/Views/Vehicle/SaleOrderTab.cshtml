@@ -1,0 +1,40 @@
+﻿@using ChipMongWebApp.Utils.Helpers
+@using ChipMongWebApp.Models.DTO.SaleOrder
+@model ChipMongWebApp.Models.DTO.SaleOrder.SaleOrderFindDTO
+@{
+    Layout = "~/Views/Shared/Main/_Main.cshtml";
+}
+
+@Html.Partial("~/Views/Customer/Tabs.cshtml")
+
+<form name="record" id="record">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.orderBy, new { Value = nameof(SaleOrderViewDTO.code) })
+    @Html.HiddenFor(m => m.orderDirection, new { Value = ConstantHelper.ASC })
+
+    @Html.HiddenFor(m => m.currentPage, new { Value = 1 })
+    @Html.HiddenFor(m => m.customerID, new { Value = @Url.RequestContext.RouteData.Values["id"] })
+</form>
+
+@Html.Partial("~/Views/Shared/Template/FindMode/TableData.cshtml")
+
+<script src="~/Content/js/function/template/findmode/button.js"></script>
+<script>
+    const id = @Url.RequestContext.RouteData.Values["id"];
+    const controller = "@ConstantHelper.SALEORDER_CONTROLLER";
+
+    $(document).ready(() => {
+        $("#saleorderTab").contents().unwrap();
+        find();
+    });
+    const customerTab = () => location.href = "@ConstantHelper.CUSTOMER_CONTROLLER" + "/view/" + id;
+    const sourceSupplyTab = () => location.href = "@ConstantHelper.CUSTOMER_CONTROLLER" + "/sourceSupplytab/" + id;
+</script>
+
+
+
+
+
+
+
+

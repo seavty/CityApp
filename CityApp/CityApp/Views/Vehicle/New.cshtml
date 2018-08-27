@@ -1,0 +1,16 @@
+﻿@using CityApp.Utils.Helpers
+@{
+    Layout = "~/Views/Shared/Main/_Main.cshtml";
+}
+
+@Html.Partial("~/Views/Shared/Template/NewMode/Button.cshtml")
+<br />
+@Html.Partial("~/Views/Vehicle/Form.cshtml")
+
+<script src="~/Content/js/function/template/newmode/button.js"></script>
+<script src="~/Content/js/function/template/ssa.js"></script>
+<script src="~/Content/js/modules/vehicle/script.js"></script>
+<script>
+    const controller = "@ConstantHelper.VEHICLE_CONTROLLER";
+    $(document).ready(() => initializeComponents());
+</script>

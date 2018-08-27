@@ -38,6 +38,7 @@ namespace CityApp.Utils.Helpers
 
         public static readonly string CUSTOMER_CONTROLLER = "/customer";
         public static readonly string DRIVER_CONTROLLER = "/driver";
+        public static readonly string VEHICLE_CONTROLLER = "/vehicle";
         public static readonly string USER_CONTROLLER = "/user";
         public static readonly string SALEORDER_CONTROLLER = "/saleorder";
         

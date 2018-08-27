@@ -12,7 +12,7 @@
     <br />
     <div class="card shadow-sm">
         <div class="card-header merienda"> Find Driver </div>
-        @Html.HiddenFor(m => m.orderBy, new { Value = nameof(DriverViewDTO.name) })
+        @Html.HiddenFor(m => m.orderBy, new { Value = nameof(DriverViewDTO.driverName) })
         @Html.HiddenFor(m => m.orderDirection, new { Value = ConstantHelper.ASC })
         <!-- card body -->
         <div class="card-body">
@@ -20,15 +20,15 @@
 
                 <div class="col">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.code)
-                        @Html.TextBoxFor(m => m.code, new { @class = "form-control", placeholder = "Driver ID", @maxlength = "100" })
+                        @Html.LabelFor(m => m.driverCode)
+                        @Html.TextBoxFor(m => m.driverCode, new { @class = "form-control", placeholder = "Driver ID", @maxlength = "100" })
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.name)
-                        @Html.TextBoxFor(m => m.name, new { @class = "form-control", placeholder = "Driver Name", @maxlength = "100" })
+                        @Html.LabelFor(m => m.driverName)
+                        @Html.TextBoxFor(m => m.driverName, new { @class = "form-control", placeholder = "Driver Name", @maxlength = "100" })
                     </div>
                 </div>
 
