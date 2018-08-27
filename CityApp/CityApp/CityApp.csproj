@@ -164,6 +164,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FavouriteDriverController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
@@ -192,6 +193,9 @@
     <Compile Include="Models\DB\tblDriver.cs">
       <DependentUpon>CityAppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB\tblFavouriteDriver.cs">
+      <DependentUpon>CityAppModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DB\tblUser.cs">
       <DependentUpon>CityAppModel.tt</DependentUpon>
     </Compile>
@@ -199,6 +203,11 @@
       <DependentUpon>CityAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DTO\Auth\LoginDTO.cs" />
+    <Compile Include="Models\DTO\FavouriteDriver\FavouriteDriverBaseDTO.cs" />
+    <Compile Include="Models\DTO\FavouriteDriver\FavouriteDriverTabDTO.cs" />
+    <Compile Include="Models\DTO\FavouriteDriver\FavouriteDriverViewDTO.cs" />
+    <Compile Include="Models\DTO\FavouriteDriver\FavouriteDriverFindDTO.cs" />
+    <Compile Include="Models\DTO\FavouriteDriver\FavouriteDriverFindResultDTO.cs" />
     <Compile Include="Models\DTO\Vehicle\VehicleBaseDTO.cs" />
     <Compile Include="Models\DTO\Vehicle\VehicleEditDTO.cs" />
     <Compile Include="Models\DTO\Vehicle\VehicleFindResultDTO.cs" />
@@ -240,6 +249,7 @@
     <Compile Include="Utils\Extension\PagingExtension.cs" />
     <Compile Include="Utils\Extension\StringExtension.cs" />
     <Compile Include="Utils\Handlers\AuthHandler.cs" />
+    <Compile Include="Utils\Handlers\FavouriteDriverHandler.cs" />
     <Compile Include="Utils\Handlers\VehicleHandler.cs" />
     <Compile Include="Utils\Handlers\DriverHandler.cs" />
     <Compile Include="Utils\Handlers\CustomerHandler.cs" />
@@ -368,7 +378,7 @@
     <Content Include="Views\Customer\Form.cshtml" />
     <Content Include="Views\Customer\New.cshtml" />
     <Content Include="Views\Customer\Paging.cshtml" />
-    <Content Include="Views\Customer\SaleOrderTab.cshtml" />
+    <Content Include="Views\Customer\FavouriteDriverTab.cshtml" />
     <Content Include="Views\Customer\SourceSupplyTab.cshtml" />
     <Content Include="Views\Customer\Tabs.cshtml" />
     <Content Include="Views\Customer\View.cshtml" />
@@ -401,6 +411,7 @@
     <Content Include="Views\Vehicle\SourceSupplyTab.cshtml" />
     <Content Include="Views\Vehicle\Tabs.cshtml" />
     <Content Include="Views\Vehicle\View.cshtml" />
+    <Content Include="Views\FavouriteDriver\Paging.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

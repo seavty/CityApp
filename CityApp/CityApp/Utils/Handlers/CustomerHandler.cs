@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Linq.Dynamic;
 using CityApp.Utils.Extension;
+using CityApp.Models.DTO.FavouriteDriver;
 
 namespace CityApp.Utils.Handlers
 {
@@ -123,58 +124,5 @@ namespace CityApp.Utils.Handlers
             await db.SaveChangesAsync();
             return true;
         }
-
-        /*
-        //-> GetList SaleOrderTabPaging
-        public async Task<GetListDTO<SaleOrderViewDTO>> SaleOrderTabPaging(int customerID, int currentPage)
-        {
-            IQueryable<tblSaleOrder> records = from s in db.tblSaleOrders
-                                               join c in db.tblCustomers on s.customerID equals c.id
-                                               where s.deleted == null && s.customerID == customerID
-                                               orderby s.id ascending
-                                               select s;
-            var saleOrderHandler = new SaleOrderHandler();
-            return await saleOrderHandler.ListingHandler(currentPage, records);
-
-        }
-
-        
-        //-> GetList SourceSupplyTabPaging
-        public List<DealerSourceSupplyDTO> SourceSupplyTabPaging(int customerID)
-        {
-
-            var records = from s in db.tblSourceOfSupplies
-                          join d in db.tblDealerSourceOfSupplies on s.id equals d.sourceOfSupplyID
-                          join c in db.tblCustomers on d.dealerID equals c.id
-                          where s.deleted == null && d.deleted == null && c.id == customerID
-                          orderby s.name ascending
-                          select
-                          (
-                           new DealerSourceSupplyDTO
-                           {
-                               id = d.id,
-                               sourceSupplyID = s.id,
-                               name = s.name
-
-                           });
-            return records.ToList(); ;
-
-            //var myTest = await records.ToListAsync();
-            //return await records.ToListAsync();
-
-        }
-        
-
-        //-> New
-        public async Task<bool> AddSourceSupply(int customerID, int sourceSupplyID)
-        {
-            var record = new tblDealerSourceOfSupply();
-            record.dealerID = customerID;
-            record.sourceOfSupplyID = sourceSupplyID;
-            db.tblDealerSourceOfSupplies.Add(record);
-            await db.SaveChangesAsync();
-            return true;
-        }
-        */
     }
 }

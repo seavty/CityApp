@@ -37,6 +37,19 @@
           <Property Name="driv_Email" Type="nvarchar" MaxLength="100" />
           <Property Name="driv_Note" Type="nvarchar" MaxLength="1000" />
         </EntityType>
+        <EntityType Name="tblFavouriteDriver">
+          <Key>
+            <PropertyRef Name="favr_FavouriteDirverID" />
+          </Key>
+          <Property Name="favr_FavouriteDirverID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="favr_CreatedDate" Type="datetime" />
+          <Property Name="favr_CreatedBy" Type="int" />
+          <Property Name="favr_UpdatedDate" Type="datetime" />
+          <Property Name="favr_UpdatedBy" Type="int" />
+          <Property Name="favr_Deleted" Type="int" />
+          <Property Name="favr_CustomerID" Type="int" />
+          <Property Name="favr_DriverID" Type="int" />
+        </EntityType>
         <EntityType Name="tblUser">
           <Key>
             <PropertyRef Name="user_UserID" />
@@ -76,6 +89,7 @@
         <EntityContainer Name="CityAppModelStoreContainer">
           <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDriver" EntityType="Self.tblDriver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFavouriteDriver" EntityType="Self.tblFavouriteDriver" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblVehicle" EntityType="Self.tblVehicle" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -123,6 +137,7 @@
           <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
           <EntitySet Name="tblCustomers" EntityType="CityAppModel.tblCustomer" />
           <EntitySet Name="tblVehicles" EntityType="CityAppModel.tblVehicle" />
+          <EntitySet Name="tblFavouriteDrivers" EntityType="CityAppModel.tblFavouriteDriver" />
         </EntityContainer>
         <EntityType Name="tblCustomer">
           <Key>
@@ -155,6 +170,19 @@
           <Property Name="chassis" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="plateNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="engineNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="driverID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblFavouriteDriver">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <Property Name="createdBy" Type="Int32" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+          <Property Name="updatedBy" Type="Int32" />
+          <Property Name="deleted" Type="Int32" />
+          <Property Name="customerID" Type="Int32" />
           <Property Name="driverID" Type="Int32" />
         </EntityType>
       </Schema>
@@ -232,6 +260,20 @@
                 <ScalarProperty Name="createdBy" ColumnName="vehi_CreatedBy" />
                 <ScalarProperty Name="createdDate" ColumnName="vehi_CreatedDate" />
                 <ScalarProperty Name="id" ColumnName="vehi_VehicleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFavouriteDrivers">
+            <EntityTypeMapping TypeName="CityAppModel.tblFavouriteDriver">
+              <MappingFragment StoreEntitySet="tblFavouriteDriver">
+                <ScalarProperty Name="driverID" ColumnName="favr_DriverID" />
+                <ScalarProperty Name="customerID" ColumnName="favr_CustomerID" />
+                <ScalarProperty Name="deleted" ColumnName="favr_Deleted" />
+                <ScalarProperty Name="updatedBy" ColumnName="favr_UpdatedBy" />
+                <ScalarProperty Name="updatedDate" ColumnName="favr_UpdatedDate" />
+                <ScalarProperty Name="createdBy" ColumnName="favr_CreatedBy" />
+                <ScalarProperty Name="createdDate" ColumnName="favr_CreatedDate" />
+                <ScalarProperty Name="id" ColumnName="favr_FavouriteDirverID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

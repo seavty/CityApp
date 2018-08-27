@@ -112,46 +112,8 @@ namespace CityApp.Controllers
             }
         }
 
-        /*
-        //-> View
-        public ActionResult SaleOrderTab(int id) { return View(); }
-
-          
-        //-> SaleOrderTabPaging
-        public async Task<ActionResult> SaleOrderTabPaging(int id)
-        {
-            var currentPage = int.Parse(Request.QueryString["currentPage"].ToString());
-            return PartialView("~/Views/SaleOrder/Paging.cshtml", await handler.SaleOrderTabPaging(id, currentPage));
-        }
-
-        //-> View
-        public ActionResult SourceSupplyTab(int id) { return View(); }
-
-        //-> SourceSupplyTabPaging
-        public ActionResult DealerSourceSupply(int id)
-        {
-            return PartialView("~/Views/DealerSourceSupply/Table.cshtml", handler.SourceSupplyTabPaging(id));
-        }
         
-
-        //-> New
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<JsonResult> AddSourceSupply(int id)
-        {
-            try
-            {
-                if (!ModelState.IsValid)
-                    throw new HttpException((int)HttpStatusCode.BadRequest, ConstantHelper.KEY_IN_REQUIRED_FIELD);
-                Response.StatusCode = 200;
-                return Json(await handler.AddSourceSupply(id, int.Parse(Request.QueryString["sourceOfSupplyID"].ToString())), JsonRequestBehavior.AllowGet);
-            }
-            catch (HttpException)
-            {
-                return Json(ConstantHelper.ERROR, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        */
+        //-> View
+        public ActionResult FavouriteDriverTab(int id) { return View(); }
     }
 }

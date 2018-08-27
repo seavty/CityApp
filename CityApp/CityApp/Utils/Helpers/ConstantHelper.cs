@@ -41,8 +41,9 @@ namespace CityApp.Utils.Helpers
         public static readonly string VEHICLE_CONTROLLER = "/vehicle";
         public static readonly string USER_CONTROLLER = "/user";
         public static readonly string SALEORDER_CONTROLLER = "/saleorder";
-        
-        
+        public static readonly string FAVOURITE_DRIVER_CONTROLLER = "/favouritedriver";
+
+
 
         public static readonly string yyyyMMd_DASH_SEPARATOR = "yyyy-MM-dd";
         public static readonly string ddMMyyyy_DASH_SEPARATOR = "dd-MM-yyyy";
