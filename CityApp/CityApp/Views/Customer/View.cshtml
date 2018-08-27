@@ -17,10 +17,7 @@
 
 <script src="~/Content/js/function/template/viewmode/button.js"></script>
 <script>
+    const id = "@Url.RequestContext.RouteData.Values["id"]".replace(" ", "");
     const controller = "@ConstantHelper.CUSTOMER_CONTROLLER";
-    const id = "@Url.RequestContext.RouteData.Values["id"]";
-
     $(document).ready(() => $("#customerTab").contents().unwrap());
-    const favouriteDriverTab = () => location.href = controller + "/favouritedrivertab/" + id;
-    const ratingDriverTab = () => location.href = controller + "/ratingdrivertab/" + id;
 </script>

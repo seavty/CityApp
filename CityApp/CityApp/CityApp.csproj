@@ -164,6 +164,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\RatingDriverController.cs" />
     <Compile Include="Controllers\FavouriteDriverController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
@@ -196,6 +197,9 @@
     <Compile Include="Models\DB\tblFavouriteDriver.cs">
       <DependentUpon>CityAppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB\tblRating.cs">
+      <DependentUpon>CityAppModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DB\tblUser.cs">
       <DependentUpon>CityAppModel.tt</DependentUpon>
     </Compile>
@@ -203,6 +207,11 @@
       <DependentUpon>CityAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DTO\Auth\LoginDTO.cs" />
+    <Compile Include="Models\DTO\RatingDriver\RatingDriverBaseDTO.cs" />
+    <Compile Include="Models\DTO\RatingDriver\RatingDriverFindDTO.cs" />
+    <Compile Include="Models\DTO\RatingDriver\RatingDriverFindResultDTO.cs" />
+    <Compile Include="Models\DTO\RatingDriver\RatingDriverTabDTO.cs" />
+    <Compile Include="Models\DTO\RatingDriver\RatingDriverViewDTO.cs" />
     <Compile Include="Models\DTO\FavouriteDriver\FavouriteDriverBaseDTO.cs" />
     <Compile Include="Models\DTO\FavouriteDriver\FavouriteDriverTabDTO.cs" />
     <Compile Include="Models\DTO\FavouriteDriver\FavouriteDriverViewDTO.cs" />
@@ -249,6 +258,7 @@
     <Compile Include="Utils\Extension\PagingExtension.cs" />
     <Compile Include="Utils\Extension\StringExtension.cs" />
     <Compile Include="Utils\Handlers\AuthHandler.cs" />
+    <Compile Include="Utils\Handlers\RatingDriverHandler.cs" />
     <Compile Include="Utils\Handlers\FavouriteDriverHandler.cs" />
     <Compile Include="Utils\Handlers\VehicleHandler.cs" />
     <Compile Include="Utils\Handlers\DriverHandler.cs" />
@@ -302,6 +312,7 @@
     <Content Include="Content\js\jquery.serialize-object.min.js" />
     <Content Include="Content\js\jquery.toast.js" />
     <Content Include="Content\js\jquery_min.js" />
+    <Content Include="Content\js\modules\customer\script.js" />
     <Content Include="Content\js\modules\vehicle\script.js" />
     <Content Include="Content\js\popper.min.js" />
     <Content Include="Content\js\select2.full.js" />
@@ -412,6 +423,8 @@
     <Content Include="Views\Vehicle\Tabs.cshtml" />
     <Content Include="Views\Vehicle\View.cshtml" />
     <Content Include="Views\FavouriteDriver\Paging.cshtml" />
+    <Content Include="Views\RatingDriver\Paging.cshtml" />
+    <Content Include="Views\Customer\RatingDriverTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

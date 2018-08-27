@@ -1,7 +1,17 @@
-﻿<nav aria-label="breadcrumb">
+﻿@using CityApp.Utils.Helpers
+<nav aria-label="breadcrumb">
     <ol class="breadcrumb shadow-sm">
         <li class="breadcrumb-item"> <a href="javascript:onclick=customerTab()" id="customerTab"> Customer </a> </li>
         <li class="breadcrumb-item"> <a href="javascript:onclick=favouriteDriverTab()" id="favouriteDriverTab"> Favourite Driver </a></li>
         <li class="breadcrumb-item"> <a href="javascript:onclick=ratingDriverTab()" id="ratingDriverTab"> Rating Driver </a></li>
     </ol>
 </nav>
+
+<script>
+    const mainController = "@ConstantHelper.CUSTOMER_CONTROLLER";
+    const mainID = "@Url.RequestContext.RouteData.Values["id"]".replace(" ", "");
+    
+    const customerTab = () => location.href = mainController + "/view/" + mainID;
+    const favouriteDriverTab = () => location.href = mainController + "/favouritedrivertab/" + mainID;
+    const ratingDriverTab = () => location.href = mainController + "/ratingdrivertab/" + mainID;
+</script>

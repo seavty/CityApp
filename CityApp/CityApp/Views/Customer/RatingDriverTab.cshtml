@@ -1,6 +1,6 @@
 ﻿@using CityApp.Utils.Helpers
-@using CityApp.Models.DTO.FavouriteDriver
-@model CityApp.Models.DTO.FavouriteDriver.FavouriteDriverFindDTO
+@using CityApp.Models.DTO.RatingDriver
+@model CityApp.Models.DTO.RatingDriver.RatingDriverFindDTO
 @{
     Layout = "~/Views/Shared/Main/_Main.cshtml";
 }
@@ -9,7 +9,7 @@
 
 <form name="record" id="record">
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(m => m.orderBy, new { Value = nameof(FavouriteDriverViewDTO.driver.driverName) })
+    @Html.HiddenFor(m => m.orderBy, new { Value = nameof(RatingDriverViewDTO.driver.driverName) })
     @Html.HiddenFor(m => m.orderDirection, new { Value = ConstantHelper.ASC })
 
     @Html.HiddenFor(m => m.currentPage, new { Value = 1 })
@@ -21,10 +21,10 @@
 <script src="~/Content/js/function/template/findmode/button.js"></script>
 <script>
     const id =" @Url.RequestContext.RouteData.Values["id"]";
-    const controller = "@ConstantHelper.FAVOURITE_DRIVER_CONTROLLER";
+    const controller = "@ConstantHelper.RATING_DRIVER_CONTROLLER";
 
     $(document).ready(() => {
-        $("#favouriteDriverTab").contents().unwrap();
+        $("#ratingDriverTab").contents().unwrap();
         find();
     });
 </script>
