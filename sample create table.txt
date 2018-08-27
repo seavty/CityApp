@@ -1,0 +1,11 @@
+cust_CustomerID		primary key -> auto increment, is identity -> yes
+cust_CreatedDate	date time 
+cust_CreatedBy		int 
+cust_UpdatedDate	date time 
+cust_UpdatedBy		int 
+cust_Deleted		int
+cust_Code		nvarchar(100)
+cust_Name		nvarchar(100)
+
+
+numeric(18, 5)

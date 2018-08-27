@@ -1,0 +1,15 @@
+set nocount on
+INSERT INTO tblCustomer(cust_FirstName) values(newid())
+go 1000
+
+
+
+truncate table [dbo].[tblCustomer]
+
+select cust_code, cust_FirstName, cust_LastName, cust_Phone1, cust_Email from tblCustomer
+
+
+set nocount on
+INSERT INTO tblCustomer(cust_code, cust_FirstName, cust_LastName, cust_Phone1, cust_Email) 
+values(newid(),newid(),newid(),newid(),newid())
+go 1000

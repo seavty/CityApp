@@ -1,0 +1,38 @@
+ALTER TRIGGER [dbo].[tr_CustomerID]
+   ON  [dbo].[tblAccount]
+   AFTER UPDATE,INSERT
+AS 
+BEGIN
+ SET NOCOUNT ON;
+ DECLARE @ref INT
+ DECLARE @id INT
+ DECLARE @oref VARCHAR(20)
+ DECLARE @startDate DATETIME
+ 
+
+ DECLARE cur CURSOR LOCAL READ_ONLY FAST_FORWARD FOR
+    SELECT acct_AccountID, acct_Name, acct_CreatedDate  FROM inserted
+ OPEN cur
+
+    FETCH NEXT FROM cur INTO @id,@oref,@startDate
+		WHILE @@FETCH_STATUS = 0 BEGIN
+			IF(@oref IS NULL) BEGIN  
+				DECLARE @m nvarchar(10)
+				DECLARE @y nvarchar(10)
+
+				SET @m = CONVERT(nvarchar(10),STUFF(MONTH(@startDate) , 1, 0, REPLICATE('0', 2 - LEN(MONTH(@startDate)))))
+				SET @y = CONVERT(nvarchar(10),YEAR(@startDate))
+				DECLARE @casecount int = 0
+   
+				SELECT @casecount=count(1) FROM tblAccount WHERE YEAR(acct_CreatedDate)=@y
+   
+				SET @ref = @casecount
+   
+				UPDATE tblAccount SET acct_Name  = 'CUST-' + RIGHT(@y,2)  + STUFF(@ref , 1, 0, REPLICATE('0', 6 - LEN(@ref)))
+				WHERE acct_AccountID = @id   
+			END
+			FETCH NEXT FROM cur INTO @id, @oref, @startDate
+		END
+    CLOSE cur
+    DEALLOCATE cur
+END
