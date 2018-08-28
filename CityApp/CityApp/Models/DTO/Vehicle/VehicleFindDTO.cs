@@ -18,8 +18,8 @@ namespace CityApp.Models.DTO.Vehicle
         public string plateNumber { get; set; }
 
         [MaxLength(100)]
-        [DisplayName("Driver Name:")]
-        public string driverName { get; set; }
+        [DisplayName("Driver ID:")]
+        public string driverCode { get; set; }
 
         [DisplayName("DriverID:")]
         public int driverID { get; set; }

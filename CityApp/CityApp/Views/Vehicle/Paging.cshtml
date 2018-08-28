@@ -1,4 +1,5 @@
-﻿@using CityApp.Models.DTO.Vehicle
+﻿@using CityApp.Utils.Helpers
+@using CityApp.Models.DTO.Vehicle
 @using CityApp.Models.DTO.Driver
 @model CityApp.Models.DTO.GetListDTO<CityApp.Models.DTO.Vehicle.VehicleViewDTO>
 
@@ -8,6 +9,7 @@
             <th scope="col" width="65px">#</th>
             <th scope="col"> <a href="#" id="sort_@nameof(VehicleViewDTO.vehicleCode)" class="sort-data" onclick='javascript:sort("@nameof(VehicleViewDTO.vehicleCode)", $(this))'> Vehicle ID </a>  </th>
             <th scope="col"> <a href="#" id="sort_@nameof(VehicleViewDTO.vehicleName)" class="sort-data" onclick='javascript:sort("@nameof(VehicleViewDTO.vehicleName)", $(this))'> Vehicle Name </a>  </th>
+            <th scope="col"> <a href="#" id="sort_@nameof(DriverViewDTO.driverName)" class="sort-data" onclick='javascript:sort("@nameof(DriverViewDTO.driverCode)", $(this))'> Driver ID </a>  </th>
             <th scope="col"> <a href="#" id="sort_@nameof(DriverViewDTO.driverName)" class="sort-data" onclick='javascript:sort("@nameof(DriverViewDTO.driverName)", $(this))'> Driver Name </a>  </th>
             <th scope="col"> <a href="#" id="sort_@nameof(VehicleViewDTO.plateNumber)" class="sort-data" onclick='javascript:sort("@nameof(VehicleViewDTO.plateNumber)")'> Plate Number </a>  </th>
             <th scope="col"> <a href="#" id="sort_@nameof(VehicleViewDTO.chassis)" class="sort-data" onclick='javascript:sort("@nameof(VehicleViewDTO.chassis)")'> Chassis </a>  </th>
@@ -20,15 +22,16 @@
             int i = 0;
             foreach (var item in Model.items)
             {
-        <tr>
-            <th scope="row" class="text-center"> @(Model.metaData.startRow + i) </th>
-            <td class="align-middle"> <a href=" @Url.Content("~/Vehicle/view/")@item.id"> @item.vehicleCode </a> </td>
-            <td> @item.vehicleName </td>
-            <td> @item.driver.driverName </td>
-            <td> @item.plateNumber </td>
-            <td> @item.chassis </td>
-            <td> @item.engineNumber </td>
-        </tr>
+                <tr>
+                    <th scope="row" class="text-center"> @(Model.metaData.startRow + i) </th>
+                    <td class="align-middle"> <a href="@ConstantHelper.VEHICLE_CONTROLLER/view/@item.id"> @item.vehicleCode </a> </td>
+                    <td> @item.vehicleName </td>
+                    <td> <a href="@ConstantHelper.DRIVER_CONTROLLER/view/@item.driver.id"> @item.driver.driverCode </a> </td>
+                    <td> @item.driver.driverName </td>
+                    <td> @item.plateNumber </td>
+                    <td> @item.chassis </td>
+                    <td> @item.engineNumber </td>
+                </tr>
                 i++;
             }
         }

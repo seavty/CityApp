@@ -1,12 +1,13 @@
-﻿@using CityApp.Models.DTO.RatingDriver
+﻿@using CityApp.Utils.Helpers
+@using CityApp.Models.DTO.RatingDriver
 @model CityApp.Models.DTO.GetListDTO<CityApp.Models.DTO.RatingDriver.RatingDriverViewDTO>
 
 <table class="table table-bordered table-striped table-hover">
     <thead>
         <tr class="text-center">
             <th scope="col" width="65px">#</th>
-            <th scope="col">  Customer ID </th>
-            <th scope="col">  Customer Name </th>
+            <th scope="col"> <a href="#" id="sort_@nameof(RatingDriverViewDTO.customer.customerCode)" class="sort-data" onclick='javascript:sort("@nameof(RatingDriverViewDTO.customer.customerCode)", $(this))'> Customer ID </a> </th>
+            <th scope="col"> <a href="#" id="sort_@nameof(RatingDriverViewDTO.customer.customerName)" class="sort-data" onclick='javascript:sort("@nameof(RatingDriverViewDTO.customer.customerName)", $(this))'> Customer Name </a> </th>
             <th scope="col"> <a href="#" id="sort_@nameof(RatingDriverViewDTO.driver.driverCode)" class="sort-data" onclick='javascript:sort("@nameof(RatingDriverViewDTO.driver.driverCode)", $(this))'> Driver ID </a>  </th>
             <th scope="col"> <a href="#" id="sort_@nameof(RatingDriverViewDTO.driver.driverName)" class="sort-data" onclick='javascript:sort("@nameof(RatingDriverViewDTO.driver.driverName)", $(this))'> Driver Name </a>  </th>
             <th scope="col"> <a href="#" id="sort_@nameof(RatingDriverViewDTO.star)" class="sort-data" onclick='javascript:sort("@nameof(RatingDriverViewDTO.star)", $(this))'> Rating Star </a>  </th>
@@ -18,18 +19,18 @@
             int i = 0;
             foreach (var item in Model.items)
             {
-        <tr>
-            <th scope="row" class="text-center"> @(Model.metaData.startRow + i) </th>
-            <td class="align-middle"> @item.customer.customerCode </td>
-            <td class="align-middle"> @item.customer.customerName </td>
-            <td class="align-middle"> <a href=" @Url.Content("~/driver/view/")@item.driver.id"> @item.driver.driverCode </a> </td>
-            <td class="align-middle"> @item.driver.driverName </td>
-            <td class="align-middle"> @item.star </td>
-        </tr>
+                <tr>
+                    <th scope="row" class="text-center"> @(Model.metaData.startRow + i) </th>
+                    <td class="align-middle"> <a href="@ConstantHelper.CUSTOMER_CONTROLLER/view/@item.customer.id">  @item.customer.customerCode </a> </td>
+                    <td class="align-middle"> @item.customer.customerName </td>
+                    <td class="align-middle"> <a href="@ConstantHelper.DRIVER_CONTROLLER/view/@item.driver.id"> @item.driver.driverCode </a> </td>
+                    <td class="align-middle"> @item.driver.driverName </td>
+                    <td class="align-middle"> @item.star </td>
+                </tr>
                 i++;
             }
         }
 
         @Html.Partial("~/Views/Shared/Pagination.cshtml", Model.metaData)
 
-        
+

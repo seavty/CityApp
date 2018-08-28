@@ -52,7 +52,9 @@ namespace CityApp.Utils.Handlers
                                                          {
                                                              id = f.id,
                                                              driverCode = d.driverCode,
-                                                             driverName = d.driverName
+                                                             driverName = d.driverName,
+                                                             customerCode = c.customerCode,
+                                                             customerName = c.customerName 
                                                          };
             query = query.AsQueryable().OrderBy($"{findDTO.orderBy} {findDTO.orderDirection}");
             return await ListingHandler(findDTO.currentPage, query);

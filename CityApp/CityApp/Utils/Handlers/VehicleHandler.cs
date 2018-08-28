@@ -80,13 +80,14 @@ namespace CityApp.Utils.Handlers
                                                        where v.deleted == null
                                                        && (string.IsNullOrEmpty(findDTO.vehicleCode) ? 1 == 1 : v.vehicleCode.StartsWith(findDTO.vehicleCode))
                                                        && (string.IsNullOrEmpty(findDTO.plateNumber) ? 1 == 1 : v.plateNumber.StartsWith(findDTO.plateNumber))
-                                                       && (string.IsNullOrEmpty(findDTO.driverName) ? 1 == 1 : d.driverName.StartsWith(findDTO.driverName))
+                                                       && (string.IsNullOrEmpty(findDTO.driverCode) ? 1 == 1 : d.driverName.StartsWith(findDTO.driverCode))
                                                        && (findDTO.driverID == 0 ? 1 == 1 : d.id == findDTO.driverID)
                                                        select new VehicleFindResultDTO
                                                        {
                                                            id = v.id,
                                                            vehicleCode = v.vehicleCode,
                                                            vehicleName = v.vehicleName,
+                                                           driverCode = d.driverCode,
                                                            driverName = d.driverName,
                                                            plateNumber = v.plateNumber,
                                                            chassis = v.chassis,
@@ -109,7 +110,7 @@ namespace CityApp.Utils.Handlers
             }
             var getList = new GetListDTO<VehicleViewDTO>();
             getList.metaData = PaginationHelper.GetMetaData(currentPage, totalRecord);
-            getList.metaData.numberOfColumn = 7; // need to change number of column
+            getList.metaData.numberOfColumn = 8; // need to change number of column
             getList.items = myList;
             return getList;
         }

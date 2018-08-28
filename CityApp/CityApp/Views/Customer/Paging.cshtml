@@ -1,4 +1,5 @@
-﻿@using CityApp.Models.DTO.Customer
+﻿@using CityApp.Utils.Helpers
+@using CityApp.Models.DTO.Customer
 @model CityApp.Models.DTO.GetListDTO<CityApp.Models.DTO.Customer.CustomerViewDTO>
 
 <table class="table table-bordered table-striped table-hover">
@@ -9,7 +10,7 @@
             <th scope="col"> <a href="#" id="sort_@nameof(CustomerViewDTO.customerName)" class="sort-data" onclick='javascript:sort("@nameof(CustomerViewDTO.customerName)", $(this))'> Customer Name </a>  </th>
             <th scope="col"> <a href="#" id="sort_@nameof(CustomerViewDTO.PhoneNumber)" class="sort-data" onclick='javascript:sort("@nameof(CustomerViewDTO.PhoneNumber)")'> Phone Number </a>  </th>
             <th scope="col"> <a href="#" id="sort_@nameof(CustomerViewDTO.email)" class="sort-data" onclick='javascript:sort("@nameof(CustomerViewDTO.email)")'> E-mail </a>  </th>
-            
+
         </tr>
     </thead>
     <tbody>
@@ -19,7 +20,7 @@
             {
                 <tr>
                     <th scope="row" class="text-center"> @(Model.metaData.startRow + i) </th>
-                    <td class="align-middle"> <a href=" @Url.Content("~/customer/view/")@item.id"> @item.customerCode </a> </td>
+                    <td class="align-middle"> <a href="@ConstantHelper.CUSTOMER_CONTROLLER/view/@item.id"> @item.customerCode </a> </td>
                     <td> @item.customerName </td>
                     <td> @item.PhoneNumber </td>
                     <td> @item.email </td>
@@ -30,4 +31,4 @@
 
         @Html.Partial("~/Views/Shared/Pagination.cshtml", Model.metaData)
 
-        
+

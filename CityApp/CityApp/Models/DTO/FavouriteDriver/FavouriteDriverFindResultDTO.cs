@@ -12,5 +12,8 @@ namespace CityApp.Models.DTO.FavouriteDriver
         public int id { get; set; }
         public string driverCode { get; set; }
         public string driverName { get; set; }
+
+        public string customerCode { get; set; }
+        public string customerName { get; set; }
     }
 }

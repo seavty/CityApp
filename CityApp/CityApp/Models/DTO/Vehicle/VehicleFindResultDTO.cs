@@ -12,6 +12,7 @@ namespace CityApp.Models.DTO.Vehicle
         public int id { get; set; }
         public string vehicleCode { get; set; }
         public string vehicleName { get; set; }
+        public string driverCode { get; set; }
         public string driverName { get; set; }
         public string plateNumber { get; set; }
         public string chassis { get; set; }

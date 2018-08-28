@@ -13,5 +13,8 @@ namespace CityApp.Models.DTO.RatingDriver
         public int? star { get; set; }
         public string driverCode { get; set; }
         public string driverName { get; set; }
+
+        public string customerCode { get; set; }
+        public string customerName { get; set; }
     }
 }

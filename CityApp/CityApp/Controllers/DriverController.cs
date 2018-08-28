@@ -116,5 +116,9 @@ namespace CityApp.Controllers
         }
 
 
+        //-> View
+        public ActionResult VehicleTab(int id) { return View(); }
+
+
     }
 }

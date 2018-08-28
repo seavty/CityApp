@@ -112,7 +112,6 @@ namespace CityApp.Controllers
             }
         }
 
-        
         //-> View
         public ActionResult FavouriteDriverTab(int id) { return View(); }
 
