@@ -4,6 +4,7 @@
         <li class="breadcrumb-item"> <a href="javascript:onclick=customerTab()" id="customerTab"> Customer </a> </li>
         <li class="breadcrumb-item"> <a href="javascript:onclick=favouriteDriverTab()" id="favouriteDriverTab"> Favourite Driver </a></li>
         <li class="breadcrumb-item"> <a href="javascript:onclick=ratingDriverTab()" id="ratingDriverTab"> Rating Driver </a></li>
+        <li class="breadcrumb-item"> <a href="javascript:onclick=transactionTab()" id="transactionTab"> Transaction </a></li>
     </ol>
 </nav>
 
@@ -14,4 +15,5 @@
     const customerTab = () => location.href = mainController + "/view/" + mainID;
     const favouriteDriverTab = () => location.href = mainController + "/favouritedrivertab/" + mainID;
     const ratingDriverTab = () => location.href = mainController + "/ratingdrivertab/" + mainID;
+    const transactionTab = () => location.href = mainController + "/transactionTab/" + mainID;
 </script>

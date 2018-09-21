@@ -164,6 +164,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Controllers\RatingDriverController.cs" />
     <Compile Include="Controllers\FavouriteDriverController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
@@ -200,6 +202,9 @@
     <Compile Include="Models\DB\tblRating.cs">
       <DependentUpon>CityAppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB\tblTransaction.cs">
+      <DependentUpon>CityAppModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DB\tblUser.cs">
       <DependentUpon>CityAppModel.tt</DependentUpon>
     </Compile>
@@ -217,6 +222,12 @@
     <Compile Include="Models\DTO\FavouriteDriver\FavouriteDriverViewDTO.cs" />
     <Compile Include="Models\DTO\FavouriteDriver\FavouriteDriverFindDTO.cs" />
     <Compile Include="Models\DTO\FavouriteDriver\FavouriteDriverFindResultDTO.cs" />
+    <Compile Include="Models\DTO\Transaction\TransactionFindResultDTO.cs" />
+    <Compile Include="Models\DTO\Transaction\TransactionViewDTO.cs" />
+    <Compile Include="Models\DTO\Transaction\TransactionNewDTO.cs" />
+    <Compile Include="Models\DTO\Transaction\TransactionFindDTO.cs" />
+    <Compile Include="Models\DTO\Transaction\TransactionEditDTO.cs" />
+    <Compile Include="Models\DTO\Transaction\TransactionBaseDTO.cs" />
     <Compile Include="Models\DTO\Vehicle\VehicleBaseDTO.cs" />
     <Compile Include="Models\DTO\Vehicle\VehicleEditDTO.cs" />
     <Compile Include="Models\DTO\Vehicle\VehicleFindResultDTO.cs" />
@@ -258,6 +269,7 @@
     <Compile Include="Utils\Extension\PagingExtension.cs" />
     <Compile Include="Utils\Extension\StringExtension.cs" />
     <Compile Include="Utils\Handlers\AuthHandler.cs" />
+    <Compile Include="Utils\Handlers\TransactionHandler.cs" />
     <Compile Include="Utils\Handlers\RatingDriverHandler.cs" />
     <Compile Include="Utils\Handlers\FavouriteDriverHandler.cs" />
     <Compile Include="Utils\Handlers\VehicleHandler.cs" />
@@ -427,6 +439,11 @@
     <Content Include="Views\Customer\RatingDriverTab.cshtml" />
     <Content Include="Views\Vehicle\VehicleTab.cshtml" />
     <Content Include="Views\Driver\VehicleTab.cshtml" />
+    <Content Include="Views\Map\Map.cshtml" />
+    <Content Include="Views\Customer\TransactionTab.cshtml" />
+    <Content Include="Views\Transaction\Paging.cshtml" />
+    <Content Include="Views\Driver\TransactionTab.cshtml" />
+    <Content Include="Views\Vehicle\TransactionTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

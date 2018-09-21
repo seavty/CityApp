@@ -25,5 +25,10 @@ namespace CityApp.Models.DB
         public string phoneNumber { get; set; }
         public string email { get; set; }
         public string note { get; set; }
+        public string cust_UserName { get; set; }
+        public string cust_Password { get; set; }
+        public string cust_Token { get; set; }
+        public string cust_Status { get; set; }
+        public Nullable<int> cust_LastTransactionID { get; set; }
     }
 }

@@ -107,5 +107,8 @@ namespace CityApp.Controllers
                 return ex.Message;
             }
         }
+
+        //-> View
+        public ActionResult TransactionTab(int id) { return View(); }
     }
 }

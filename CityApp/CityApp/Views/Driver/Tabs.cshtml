@@ -3,6 +3,7 @@
     <ol class="breadcrumb shadow-sm">
         <li class="breadcrumb-item"> <a href="javascript:onclick=driverTab()" id="driverTab"> Driver </a> </li>
         <li class="breadcrumb-item"> <a href="javascript:onclick=vehicleTab()" id="vehicleTab"> Vehicle </a></li>
+        <li class="breadcrumb-item"> <a href="javascript:onclick=transactionTab()" id="transactionTab"> Transaction </a></li>
     </ol>
 </nav>
 
@@ -12,4 +13,5 @@
 
     const driverTab = () => location.href = mainController + "/view/" + mainID;
     const vehicleTab = () => location.href = mainController + "/vehicletab/" + mainID;
+    const transactionTab = () => location.href = mainController + "/transactionTab/" + mainID;
 </script>

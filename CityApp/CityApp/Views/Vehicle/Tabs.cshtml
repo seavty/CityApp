@@ -7,9 +7,10 @@
 </nav>
 
 <script>
-    const mainController = "@ConstantHelper.DRIVER_CONTROLLER";
+    const mainController = "@ConstantHelper.VEHICLE_CONTROLLER";
     const mainID = "@Url.RequestContext.RouteData.Values["id"]".replace(" ", "");
 
     const customerTab = () => location.href = mainController + "/view/" + mainID;
     const vehicleTab = () => location.href = mainController + "/vehicletab/" + mainID;
+    const transactionTab = () => location.href = mainController + "/transactionTab/" + mainID;
 </script>

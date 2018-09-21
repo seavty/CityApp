@@ -20,6 +20,11 @@
           <Property Name="cust_PhoneNumber" Type="nvarchar" MaxLength="100" />
           <Property Name="cust_Email" Type="nvarchar" MaxLength="100" />
           <Property Name="cust_Note" Type="nvarchar" MaxLength="1000" />
+          <Property Name="cust_UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="cust_Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="cust_Token" Type="nvarchar" MaxLength="300" />
+          <Property Name="cust_Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="cust_LastTransactionID" Type="int" />
         </EntityType>
         <EntityType Name="tblDriver">
           <Key>
@@ -36,6 +41,10 @@
           <Property Name="driv_PhoneNumber" Type="nvarchar" MaxLength="100" />
           <Property Name="driv_Email" Type="nvarchar" MaxLength="100" />
           <Property Name="driv_Note" Type="nvarchar" MaxLength="1000" />
+          <Property Name="driv_UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="driv_Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="driv_Token" Type="nvarchar" MaxLength="300" />
+          <Property Name="driv_Status" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblFavouriteDriver">
           <Key>
@@ -47,6 +56,7 @@
           <Property Name="favr_UpdatedDate" Type="datetime" />
           <Property Name="favr_UpdatedBy" Type="int" />
           <Property Name="favr_Deleted" Type="int" />
+          <Property Name="favr_Code" Type="nvarchar" MaxLength="100" />
           <Property Name="favr_CustomerID" Type="int" />
           <Property Name="favr_DriverID" Type="int" />
         </EntityType>
@@ -63,6 +73,31 @@
           <Property Name="rati_CustomerID" Type="int" />
           <Property Name="rati_DriverID" Type="int" />
           <Property Name="rati_Star" Type="int" />
+          <Property Name="rati_Code" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblTransaction">
+          <Key>
+            <PropertyRef Name="tran_TransactionID" />
+          </Key>
+          <Property Name="tran_TransactionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tran_CreatedDate" Type="datetime" />
+          <Property Name="tran_CreatedBy" Type="int" />
+          <Property Name="tran_UpdatedDate" Type="datetime" />
+          <Property Name="tran_UpdatedBy" Type="int" />
+          <Property Name="tran_Deleted" Type="int" />
+          <Property Name="tran_Code" Type="nvarchar" MaxLength="100" />
+          <Property Name="tran_Date" Type="datetime" />
+          <Property Name="tran_Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="tran_DriverID" Type="int" />
+          <Property Name="tran_CustomerID" Type="int" />
+          <Property Name="tran_VehicleID" Type="int" />
+          <Property Name="tran_StartDate" Type="datetime" />
+          <Property Name="tran_EndTime" Type="datetime" />
+          <Property Name="tran_StartLatLong" Type="nvarchar" MaxLength="50" />
+          <Property Name="tran_StartAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="tran_EndLatLong" Type="nvarchar" MaxLength="50" />
+          <Property Name="tran_EndAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="tran_Distance" Type="decimal" Precision="18" Scale="6" />
         </EntityType>
         <EntityType Name="tblUser">
           <Key>
@@ -99,12 +134,14 @@
           <Property Name="vehi_PlateNumber" Type="nvarchar" MaxLength="100" />
           <Property Name="vehi_EngineNumber" Type="nvarchar" MaxLength="100" />
           <Property Name="vehi_DriverID" Type="int" />
+          <Property Name="vehi_Status" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="CityAppModelStoreContainer">
           <EntitySet Name="tblCustomer" EntityType="Self.tblCustomer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDriver" EntityType="Self.tblDriver" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblFavouriteDriver" EntityType="Self.tblFavouriteDriver" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblRating" EntityType="Self.tblRating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTransaction" EntityType="Self.tblTransaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblVehicle" EntityType="Self.tblVehicle" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -127,6 +164,10 @@
           <Property Name="phoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="note" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="driv_UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="driv_Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="driv_Token" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="driv_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tblUser">
           <Key>
@@ -154,6 +195,7 @@
           <EntitySet Name="tblVehicles" EntityType="CityAppModel.tblVehicle" />
           <EntitySet Name="tblFavouriteDrivers" EntityType="CityAppModel.tblFavouriteDriver" />
           <EntitySet Name="tblRatings" EntityType="CityAppModel.tblRating" />
+          <EntitySet Name="tblTransactions" EntityType="CityAppModel.tblTransaction" />
         </EntityContainer>
         <EntityType Name="tblCustomer">
           <Key>
@@ -170,6 +212,11 @@
           <Property Name="phoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="note" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="cust_UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cust_Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cust_Token" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="cust_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cust_LastTransactionID" Type="Int32" />
         </EntityType>
         <EntityType Name="tblVehicle">
           <Key>
@@ -187,6 +234,7 @@
           <Property Name="plateNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="engineNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="driverID" Type="Int32" />
+          <Property Name="vehi_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tblFavouriteDriver">
           <Key>
@@ -200,6 +248,7 @@
           <Property Name="deleted" Type="Int32" />
           <Property Name="customerID" Type="Int32" />
           <Property Name="driverID" Type="Int32" />
+          <Property Name="favr_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tblRating">
           <Key>
@@ -214,6 +263,31 @@
           <Property Name="customerID" Type="Int32" />
           <Property Name="driverID" Type="Int32" />
           <Property Name="star" Type="Int32" />
+          <Property Name="rati_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblTransaction">
+          <Key>
+            <PropertyRef Name="tran_TransactionID" />
+          </Key>
+          <Property Name="tran_TransactionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tran_CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="tran_CreatedBy" Type="Int32" />
+          <Property Name="tran_UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="tran_UpdatedBy" Type="Int32" />
+          <Property Name="tran_Deleted" Type="Int32" />
+          <Property Name="tran_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="tran_Date" Type="DateTime" Precision="3" />
+          <Property Name="tran_Status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="tran_DriverID" Type="Int32" />
+          <Property Name="tran_CustomerID" Type="Int32" />
+          <Property Name="tran_VehicleID" Type="Int32" />
+          <Property Name="tran_StartDate" Type="DateTime" Precision="3" />
+          <Property Name="tran_EndTime" Type="DateTime" Precision="3" />
+          <Property Name="tran_StartLatLong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tran_StartAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="tran_EndLatLong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tran_EndAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="tran_Distance" Type="Decimal" Precision="18" Scale="6" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -224,6 +298,10 @@
           <EntitySetMapping Name="tblDrivers">
             <EntityTypeMapping TypeName="CityAppModel.tblDriver">
               <MappingFragment StoreEntitySet="tblDriver">
+                <ScalarProperty Name="driv_Status" ColumnName="driv_Status" />
+                <ScalarProperty Name="driv_Token" ColumnName="driv_Token" />
+                <ScalarProperty Name="driv_Password" ColumnName="driv_Password" />
+                <ScalarProperty Name="driv_UserName" ColumnName="driv_UserName" />
                 <ScalarProperty Name="id" ColumnName="driv_DriverID" />
                 <ScalarProperty Name="createdDate" ColumnName="driv_CreatedDate" />
                 <ScalarProperty Name="createdBy" ColumnName="driv_CreatedBy" />
@@ -261,6 +339,11 @@
           <EntitySetMapping Name="tblCustomers">
             <EntityTypeMapping TypeName="CityAppModel.tblCustomer">
               <MappingFragment StoreEntitySet="tblCustomer">
+                <ScalarProperty Name="cust_LastTransactionID" ColumnName="cust_LastTransactionID" />
+                <ScalarProperty Name="cust_Status" ColumnName="cust_Status" />
+                <ScalarProperty Name="cust_Token" ColumnName="cust_Token" />
+                <ScalarProperty Name="cust_Password" ColumnName="cust_Password" />
+                <ScalarProperty Name="cust_UserName" ColumnName="cust_UserName" />
                 <ScalarProperty Name="note" ColumnName="cust_Note" />
                 <ScalarProperty Name="email" ColumnName="cust_Email" />
                 <ScalarProperty Name="phoneNumber" ColumnName="cust_PhoneNumber" />
@@ -278,6 +361,7 @@
           <EntitySetMapping Name="tblVehicles">
             <EntityTypeMapping TypeName="CityAppModel.tblVehicle">
               <MappingFragment StoreEntitySet="tblVehicle">
+                <ScalarProperty Name="vehi_Status" ColumnName="vehi_Status" />
                 <ScalarProperty Name="driverID" ColumnName="vehi_DriverID" />
                 <ScalarProperty Name="engineNumber" ColumnName="vehi_EngineNumber" />
                 <ScalarProperty Name="plateNumber" ColumnName="vehi_PlateNumber" />
@@ -296,6 +380,7 @@
           <EntitySetMapping Name="tblFavouriteDrivers">
             <EntityTypeMapping TypeName="CityAppModel.tblFavouriteDriver">
               <MappingFragment StoreEntitySet="tblFavouriteDriver">
+                <ScalarProperty Name="favr_Code" ColumnName="favr_Code" />
                 <ScalarProperty Name="driverID" ColumnName="favr_DriverID" />
                 <ScalarProperty Name="customerID" ColumnName="favr_CustomerID" />
                 <ScalarProperty Name="deleted" ColumnName="favr_Deleted" />
@@ -310,6 +395,7 @@
           <EntitySetMapping Name="tblRatings">
             <EntityTypeMapping TypeName="CityAppModel.tblRating">
               <MappingFragment StoreEntitySet="tblRating">
+                <ScalarProperty Name="rati_Code" ColumnName="rati_Code" />
                 <ScalarProperty Name="star" ColumnName="rati_Star" />
                 <ScalarProperty Name="driverID" ColumnName="rati_DriverID" />
                 <ScalarProperty Name="customerID" ColumnName="rati_CustomerID" />
@@ -319,6 +405,31 @@
                 <ScalarProperty Name="createdBy" ColumnName="rati_CreatedBy" />
                 <ScalarProperty Name="createdDate" ColumnName="rati_CreatedDate" />
                 <ScalarProperty Name="id" ColumnName="rati_RatingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTransactions">
+            <EntityTypeMapping TypeName="CityAppModel.tblTransaction">
+              <MappingFragment StoreEntitySet="tblTransaction">
+                <ScalarProperty Name="tran_Distance" ColumnName="tran_Distance" />
+                <ScalarProperty Name="tran_EndAddress" ColumnName="tran_EndAddress" />
+                <ScalarProperty Name="tran_EndLatLong" ColumnName="tran_EndLatLong" />
+                <ScalarProperty Name="tran_StartAddress" ColumnName="tran_StartAddress" />
+                <ScalarProperty Name="tran_StartLatLong" ColumnName="tran_StartLatLong" />
+                <ScalarProperty Name="tran_EndTime" ColumnName="tran_EndTime" />
+                <ScalarProperty Name="tran_StartDate" ColumnName="tran_StartDate" />
+                <ScalarProperty Name="tran_VehicleID" ColumnName="tran_VehicleID" />
+                <ScalarProperty Name="tran_CustomerID" ColumnName="tran_CustomerID" />
+                <ScalarProperty Name="tran_DriverID" ColumnName="tran_DriverID" />
+                <ScalarProperty Name="tran_Status" ColumnName="tran_Status" />
+                <ScalarProperty Name="tran_Date" ColumnName="tran_Date" />
+                <ScalarProperty Name="tran_Code" ColumnName="tran_Code" />
+                <ScalarProperty Name="tran_Deleted" ColumnName="tran_Deleted" />
+                <ScalarProperty Name="tran_UpdatedBy" ColumnName="tran_UpdatedBy" />
+                <ScalarProperty Name="tran_UpdatedDate" ColumnName="tran_UpdatedDate" />
+                <ScalarProperty Name="tran_CreatedBy" ColumnName="tran_CreatedBy" />
+                <ScalarProperty Name="tran_CreatedDate" ColumnName="tran_CreatedDate" />
+                <ScalarProperty Name="tran_TransactionID" ColumnName="tran_TransactionID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

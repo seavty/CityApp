@@ -1,0 +1,45 @@
+﻿@using CityApp.Utils.Helpers
+@{
+    Layout = "~/Views/Shared/Main/_Main.cshtml";
+}
+
+<div id="map" style="width:80%;height:600px; margin:auto"></div>
+
+<script>
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 11.562108, lng: 104.888535 },
+            zoom:8
+        });
+        myPosition();
+    }
+
+    function myPosition() {
+        var myLatLng = { lat: 11.562108, lng: 104.888535 };
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+        });
+
+        myLatLng = { lat: 11.48333, lng: 104.95 };
+        var marker2 = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+        });
+
+
+        myLatLng = { lat: 11.48682, lng: 105.32533 };
+        var marker3 = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+        });
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxiBgwXEjQRQZlDJdREemDqY0ifIhUiDI&callback=initMap"
+        async defer></script>
+

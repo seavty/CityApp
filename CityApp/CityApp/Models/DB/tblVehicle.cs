@@ -26,5 +26,6 @@ namespace CityApp.Models.DB
         public string plateNumber { get; set; }
         public string engineNumber { get; set; }
         public Nullable<int> driverID { get; set; }
+        public string vehi_Status { get; set; }
     }
 }

@@ -23,5 +23,6 @@ namespace CityApp.Models.DB
         public Nullable<int> customerID { get; set; }
         public Nullable<int> driverID { get; set; }
         public Nullable<int> star { get; set; }
+        public string rati_Code { get; set; }
     }
 }

@@ -1,0 +1,38 @@
+﻿@using CityApp.Utils.Helpers
+@using CityApp.Models.DTO.Transaction
+@model CityApp.Models.DTO.Transaction.TransactionFindDTO
+@{
+    Layout = "~/Views/Shared/Main/_Main.cshtml";
+}
+
+@Html.Partial("~/Views/Vehicle/Tabs.cshtml")
+
+<form name="record" id="record">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.orderBy, new { Value = nameof(TransactionViewDTO.tran_Code) })
+    @Html.HiddenFor(m => m.orderDirection, new { Value = ConstantHelper.DESC })
+
+    @Html.HiddenFor(m => m.currentPage, new { Value = 1 })
+    @Html.HiddenFor(m => m.tran_VehicleID, new { Value = @Url.RequestContext.RouteData.Values["id"] })
+</form>
+
+@Html.Partial("~/Views/Shared/Template/FindMode/TableData.cshtml")
+
+<script src="~/Content/js/function/template/findmode/button.js"></script>
+<script>
+    const id =" @Url.RequestContext.RouteData.Values["id"]";
+    const controller = "@ConstantHelper.TRANSACTION_CONTROLLER";
+
+    $(document).ready(() => {
+        $("#transactionTab").contents().unwrap();
+        find();
+    });
+</script>
+
+
+
+
+
+
+
+

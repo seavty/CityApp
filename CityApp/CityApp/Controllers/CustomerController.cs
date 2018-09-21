@@ -117,5 +117,8 @@ namespace CityApp.Controllers
 
         //-> View
         public ActionResult RatingDriverTab(int id) { return View(); }
+
+        //-> View
+        public ActionResult TransactionTab(int id) { return View(); }
     }
 }

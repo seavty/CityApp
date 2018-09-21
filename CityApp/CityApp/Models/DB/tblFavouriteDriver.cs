@@ -22,5 +22,6 @@ namespace CityApp.Models.DB
         public Nullable<int> deleted { get; set; }
         public Nullable<int> customerID { get; set; }
         public Nullable<int> driverID { get; set; }
+        public string favr_Code { get; set; }
     }
 }

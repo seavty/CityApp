@@ -25,5 +25,9 @@ namespace CityApp.Models.DB
         public string phoneNumber { get; set; }
         public string email { get; set; }
         public string note { get; set; }
+        public string driv_UserName { get; set; }
+        public string driv_Password { get; set; }
+        public string driv_Token { get; set; }
+        public string driv_Status { get; set; }
     }
 }

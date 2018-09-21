@@ -11,6 +11,7 @@
         <EntityTypeShape EntityType="CityAppModel.tblVehicle" Width="1.5" PointX="0.75" PointY="4.75" />
         <EntityTypeShape EntityType="CityAppModel.tblFavouriteDriver" Width="1.5" PointX="7" PointY="1.875" />
         <EntityTypeShape EntityType="CityAppModel.tblRating" Width="1.5" PointX="3.375" PointY="5.75" />
+        <EntityTypeShape EntityType="CityAppModel.tblTransaction" Width="1.5" PointX="5.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
