@@ -32,5 +32,7 @@ namespace CityApp.Models.DB
         public virtual DbSet<tblFavouriteDriver> tblFavouriteDrivers { get; set; }
         public virtual DbSet<tblRating> tblRatings { get; set; }
         public virtual DbSet<tblTransaction> tblTransactions { get; set; }
+        public virtual DbSet<tblStatu> tblStatus { get; set; }
+        public virtual DbSet<tblTransactionLog> tblTransactionLogs { get; set; }
     }
 }

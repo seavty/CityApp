@@ -75,6 +75,20 @@
           <Property Name="rati_Star" Type="int" />
           <Property Name="rati_Code" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="tblStatus">
+          <Key>
+            <PropertyRef Name="stus_StatusID" />
+          </Key>
+          <Property Name="stus_StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stus_CreatedDate" Type="datetime" />
+          <Property Name="stus_CreatedBy" Type="int" />
+          <Property Name="stus_UpdatedDate" Type="datetime" />
+          <Property Name="stus_UpdatedBy" Type="int" />
+          <Property Name="stus_Deleted" Type="int" />
+          <Property Name="stus_Code" Type="nvarchar" MaxLength="100" />
+          <Property Name="stus_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="stus_Remark" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="tblTransaction">
           <Key>
             <PropertyRef Name="tran_TransactionID" />
@@ -98,6 +112,22 @@
           <Property Name="tran_EndLatLong" Type="nvarchar" MaxLength="50" />
           <Property Name="tran_EndAddress" Type="nvarchar" MaxLength="255" />
           <Property Name="tran_Distance" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="tran_LatLog" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="tblTransactionLog">
+          <Key>
+            <PropertyRef Name="trlg_TransactionLogID" />
+          </Key>
+          <Property Name="trlg_TransactionLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="trlg_CreatedDate" Type="datetime" />
+          <Property Name="trlg_CreatedBy" Type="int" />
+          <Property Name="trlg_UpdatedDate" Type="datetime" />
+          <Property Name="trlg_UpdatedBy" Type="int" />
+          <Property Name="trlg_Deleted" Type="int" />
+          <Property Name="trlg_Code" Type="nvarchar" MaxLength="100" />
+          <Property Name="trlg_TransactionID" Type="int" />
+          <Property Name="trlg_Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="trlg_Date" Type="datetime" />
         </EntityType>
         <EntityType Name="tblUser">
           <Key>
@@ -141,7 +171,9 @@
           <EntitySet Name="tblDriver" EntityType="Self.tblDriver" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblFavouriteDriver" EntityType="Self.tblFavouriteDriver" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblRating" EntityType="Self.tblRating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStatus" EntityType="Self.tblStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTransaction" EntityType="Self.tblTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTransactionLog" EntityType="Self.tblTransactionLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblVehicle" EntityType="Self.tblVehicle" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -196,6 +228,8 @@
           <EntitySet Name="tblFavouriteDrivers" EntityType="CityAppModel.tblFavouriteDriver" />
           <EntitySet Name="tblRatings" EntityType="CityAppModel.tblRating" />
           <EntitySet Name="tblTransactions" EntityType="CityAppModel.tblTransaction" />
+          <EntitySet Name="tblStatus" EntityType="CityAppModel.tblStatu" />
+          <EntitySet Name="tblTransactionLogs" EntityType="CityAppModel.tblTransactionLog" />
         </EntityContainer>
         <EntityType Name="tblCustomer">
           <Key>
@@ -288,6 +322,36 @@
           <Property Name="tran_EndLatLong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="tran_EndAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="tran_Distance" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="tran_LatLog" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblStatu">
+          <Key>
+            <PropertyRef Name="stus_StatusID" />
+          </Key>
+          <Property Name="stus_StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stus_CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="stus_CreatedBy" Type="Int32" />
+          <Property Name="stus_UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="stus_UpdatedBy" Type="Int32" />
+          <Property Name="stus_Deleted" Type="Int32" />
+          <Property Name="stus_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="stus_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="stus_Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblTransactionLog">
+          <Key>
+            <PropertyRef Name="trlg_TransactionLogID" />
+          </Key>
+          <Property Name="trlg_TransactionLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="trlg_CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="trlg_CreatedBy" Type="Int32" />
+          <Property Name="trlg_UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="trlg_UpdatedBy" Type="Int32" />
+          <Property Name="trlg_Deleted" Type="Int32" />
+          <Property Name="trlg_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="trlg_TransactionID" Type="Int32" />
+          <Property Name="trlg_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="trlg_Date" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -411,6 +475,7 @@
           <EntitySetMapping Name="tblTransactions">
             <EntityTypeMapping TypeName="CityAppModel.tblTransaction">
               <MappingFragment StoreEntitySet="tblTransaction">
+                <ScalarProperty Name="tran_LatLog" ColumnName="tran_LatLog" />
                 <ScalarProperty Name="tran_Distance" ColumnName="tran_Distance" />
                 <ScalarProperty Name="tran_EndAddress" ColumnName="tran_EndAddress" />
                 <ScalarProperty Name="tran_EndLatLong" ColumnName="tran_EndLatLong" />
@@ -430,6 +495,37 @@
                 <ScalarProperty Name="tran_CreatedBy" ColumnName="tran_CreatedBy" />
                 <ScalarProperty Name="tran_CreatedDate" ColumnName="tran_CreatedDate" />
                 <ScalarProperty Name="tran_TransactionID" ColumnName="tran_TransactionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStatus">
+            <EntityTypeMapping TypeName="CityAppModel.tblStatu">
+              <MappingFragment StoreEntitySet="tblStatus">
+                <ScalarProperty Name="stus_Remark" ColumnName="stus_Remark" />
+                <ScalarProperty Name="stus_Name" ColumnName="stus_Name" />
+                <ScalarProperty Name="stus_Code" ColumnName="stus_Code" />
+                <ScalarProperty Name="stus_Deleted" ColumnName="stus_Deleted" />
+                <ScalarProperty Name="stus_UpdatedBy" ColumnName="stus_UpdatedBy" />
+                <ScalarProperty Name="stus_UpdatedDate" ColumnName="stus_UpdatedDate" />
+                <ScalarProperty Name="stus_CreatedBy" ColumnName="stus_CreatedBy" />
+                <ScalarProperty Name="stus_CreatedDate" ColumnName="stus_CreatedDate" />
+                <ScalarProperty Name="stus_StatusID" ColumnName="stus_StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTransactionLogs">
+            <EntityTypeMapping TypeName="CityAppModel.tblTransactionLog">
+              <MappingFragment StoreEntitySet="tblTransactionLog">
+                <ScalarProperty Name="trlg_Date" ColumnName="trlg_Date" />
+                <ScalarProperty Name="trlg_Status" ColumnName="trlg_Status" />
+                <ScalarProperty Name="trlg_TransactionID" ColumnName="trlg_TransactionID" />
+                <ScalarProperty Name="trlg_Code" ColumnName="trlg_Code" />
+                <ScalarProperty Name="trlg_Deleted" ColumnName="trlg_Deleted" />
+                <ScalarProperty Name="trlg_UpdatedBy" ColumnName="trlg_UpdatedBy" />
+                <ScalarProperty Name="trlg_UpdatedDate" ColumnName="trlg_UpdatedDate" />
+                <ScalarProperty Name="trlg_CreatedBy" ColumnName="trlg_CreatedBy" />
+                <ScalarProperty Name="trlg_CreatedDate" ColumnName="trlg_CreatedDate" />
+                <ScalarProperty Name="trlg_TransactionLogID" ColumnName="trlg_TransactionLogID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

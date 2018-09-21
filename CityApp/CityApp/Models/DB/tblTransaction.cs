@@ -33,5 +33,6 @@ namespace CityApp.Models.DB
         public string tran_EndLatLong { get; set; }
         public string tran_EndAddress { get; set; }
         public Nullable<decimal> tran_Distance { get; set; }
+        public string tran_LatLog { get; set; }
     }
 }

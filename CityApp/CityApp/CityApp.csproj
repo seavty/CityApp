@@ -202,7 +202,13 @@
     <Compile Include="Models\DB\tblRating.cs">
       <DependentUpon>CityAppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB\tblStatu.cs">
+      <DependentUpon>CityAppModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DB\tblTransaction.cs">
+      <DependentUpon>CityAppModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\tblTransactionLog.cs">
       <DependentUpon>CityAppModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\tblUser.cs">
@@ -444,6 +450,8 @@
     <Content Include="Views\Transaction\Paging.cshtml" />
     <Content Include="Views\Driver\TransactionTab.cshtml" />
     <Content Include="Views\Vehicle\TransactionTab.cshtml" />
+    <Content Include="Views\Transaction\View.cshtml" />
+    <Content Include="Views\Transaction\Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

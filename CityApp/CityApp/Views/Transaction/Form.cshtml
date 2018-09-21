@@ -1,0 +1,70 @@
+﻿@using CityApp.Utils.Helpers
+@model CityApp.Models.DTO.Transaction.TransactionViewDTO
+
+@{ 
+    var isDiable = "";
+    var isSummary = "";
+
+    if(Model != null)
+    {
+        if (Model.mode == ConstantHelper.MODE_VIEW)
+        {
+            isDiable = "disabled";
+            isSummary = "summary";
+        }
+    }
+}
+
+<form id="record" name="record">
+    <fieldset @isDiable class=@isSummary>
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.id)
+        <div class="card shadow-sm">
+            <div class="card-header merienda"> Transaction </div>
+
+            <!-- card body -->
+            <div class="card-body">
+
+                <!--row 1-->
+                <div class="row">
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.tran_Code)
+                            @Html.TextBoxFor(m => m.tran_Code, new { placeholder = "Transaction ID",  @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.driver.driverName)
+                            @Html.TextBoxFor(m => m.driver.driverName, new { @class = "form-control required", placeholder = "Driver Name", @maxlength = "100" })
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.vehicle.vehicleCode)
+                            @Html.TextBoxFor(m => m.vehicle.vehicleCode, new { @class = "form-control required", placeholder = "Vehicle Code", @maxlength = "100" })
+                        </div>
+                    </div>
+
+                </div>
+                <!--end  row 1-->
+                <!--row 2-->
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.tran_StartAddress)
+                            @Html.TextBoxFor(m => m.tran_StartAddress, new { @class = "form-control required", placeholder = "Start Address", @maxlength = "100" })
+                        </div>
+                    </div>
+                </div>
+                <!--end  row 2-->
+            </div>
+            <!-- end card body -->
+        </div>
+
+    </fieldset>
+</form>
+

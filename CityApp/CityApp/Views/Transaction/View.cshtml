@@ -1,0 +1,23 @@
+﻿@using CityApp.Utils.Helpers
+@{
+    Layout = "~/Views/Shared/Main/_Main.cshtml";
+}
+
+@Html.Partial("~/Views/Transaction/Tabs.cshtml")
+
+<div class="card" id="action">
+    <div class="card-body text-dark shadow-sm merienda">
+        @Html.Partial("~/Views/Shared/Template/ViewMode/Button.cshtml")
+    </div>
+</div>
+
+<br />
+
+@Html.Partial("~/Views/Transaction/Form.cshtml")
+
+<script src="~/Content/js/function/template/viewmode/button.js"></script>
+<script>
+    const id = "@Url.RequestContext.RouteData.Values["id"]".replace(" ", "");
+    const controller = "@ConstantHelper.TRANSACTION_CONTROLLER";
+    $(document).ready(() => $("#transactionTab").contents().unwrap());
+</script>
